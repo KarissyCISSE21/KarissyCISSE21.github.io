@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pression artérielle — Karissy Cissé</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="container project-page">
+  <a class="back" href="../index.html#projets">← Retour aux projets</a>
+  <span class="section-num">Projet 03 · Python · Kafka · Docker · Groupe</span>
+  <h1>Surveillance de la pression artérielle</h1>
+  <p>Projet de groupe (Master 1 BIDABI, Sorbonne Paris Nord), avec Havar et Palla.</p>
+
+  <h2>Objectif</h2>
+  <p>Simuler un système de surveillance de la pression artérielle en temps réel, et montrer que Kafka transmet bien les messages, que les anomalies sont détectées et que les données normales sont sauvegardées.</p>
+
+  <h2>Données</h2>
+  <p>Des observations de patients simulées, générées au format médical FHIR par un script Python.</p>
+
+  <h2>Méthode</h2>
+  <ul>
+    <li>Un producteur envoie les mesures dans Kafka (lancé avec Docker Compose).</li>
+    <li>Un consommateur les lit, les analyse et les classe.</li>
+    <li>Une alerte est déclenchée si la tension systolique sort de l'intervalle 90–140 mmHg, ou la diastolique de 60–90 mmHg.</li>
+    <li>Les patients normaux sont enregistrés dans un fichier, les alertes dans un autre.</li>
+  </ul>
+
+<pre>generate_fhir.py → producer.py → Kafka → consumer.py → fichiers JSON</pre>
+
+  <h2>Résultats</h2>
+  <p>Les patients sont séparés en deux catégories : tension normale et anomalie (hypertension). À compléter : un exemple d'alerte ou une capture du système en fonctionnement.</p>
+
+  <h2>Ma contribution</h2>
+  <p>Analyse et traitement des données reçues (consommateur et détection des anomalies). Génération des données et Kafka : Havar. Documentation et data science : Palla.</p>
+
+  <h2>Code</h2>
+  <p><a href="https://github.com/KarissyCISSE21/blood_pressure-project">Voir le dépôt GitHub →</a></p>
+</main>
+</body>
+</html>
