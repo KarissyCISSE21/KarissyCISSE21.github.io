@@ -13,17 +13,23 @@
   <meta property="og:description" content="Étudiante en Master Big Data (Sorbonne Paris Nord). Projets, compétences et contact.">
   <meta property="og:image" content="assets/images/apercu-partage.jpg">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <nav class="container">
-    <a class="logo" href="#accueil">Kari<span>ssy</span></a>
+    <a class="logo" href="#accueil">
+      <span class="logo-badge">KC</span>
+      <span class="logo-text">Karissy Cissé</span>
+    </a>
     <ul>
-      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#accueil" class="active">Accueil</a></li>
       <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#competences">Compétences et parcours</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -32,54 +38,132 @@
 <main class="container">
 
   <!-- ========== 01 ACCUEIL ========== -->
-  <section id="accueil" class="hero">
-    <div>
-      <span class="section-num">01 · Accueil</span>
-      <h1>Bonjour, je suis <span>Karissy</span></h1>
-      <p class="subtitle">Étudiante en Master Big Data · Sorbonne Paris Nord</p>
-      <p>
-        Je me forme à l'analyse de données, à la data science et au Big Data.
-        J'aime transformer les données en informations, et les informations en
-        décisions utiles.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="#projets">Voir mes projets</a>
-        <a class="btn ghost" href="assets/cv/cv-karissy-cisse.pdf">Télécharger mon CV</a>
+  <section id="accueil">
+    <div class="section-title"><b>01</b><h2>Accueil</h2></div>
+
+    <div class="banner">
+      <div class="banner-top">
+        <div class="tech-chips">
+          <span>Python</span><span>SQL</span><span>PySpark</span><span>Kafka</span>
+        </div>
+        <a class="banner-hint" href="#projets">Voir mes projets ↓</a>
       </div>
-      <div class="badges">
-        <div class="badge"><strong>Master BIDABI</strong><span>Sorbonne Paris Nord</span></div>
-        <div class="badge"><strong>Python · PySpark</strong><span>Projets académiques</span></div>
+      <div>
+        <div class="name-card">Karissy Cissé</div>
+        <p class="banner-role">Étudiante Data · Master Big Data</p>
       </div>
     </div>
-    <!-- Remplace par ta photo (ou supprime cette ligne) -->
-    <img class="photo" src="assets/images/karissy.jpg" alt="Portrait de Karissy Cissé">
+
+    <!-- Ta photo : assets/images/karissy.jpg -->
+    <img class="avatar" src="assets/images/karissy.jpg" alt="Portrait de Karissy Cissé">
+
+    <div class="hero-info">
+      <div>
+        <h1>Karissy <span>Cissé</span></h1>
+        <p class="eyebrow">Étudiante en Master Big Data</p>
+        <p class="intro">
+          Je me forme à l'analyse de données, à la data science et au Big Data.
+          J'aime transformer les données en informations, et les informations en
+          décisions utiles.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#projets">Voir mes projets</a>
+          <a class="btn ghost" href="assets/cv/cv-karissy-cisse.pdf">Télécharger mon CV</a>
+        </div>
+      </div>
+      <ul class="facts">
+        <li><strong>MASTER BIDABI</strong><span>Sorbonne Paris Nord</span></li>
+        <li><strong>PYTHON · PYSPARK</strong><span>Analyse &amp; Big Data</span></li>
+        <li><strong>3 PROJETS</strong><span>Dont 2 en groupe</span></li>
+      </ul>
+    </div>
   </section>
 
   <!-- ========== 02 PROJETS ========== -->
   <section id="projets">
-    <span class="section-num">02</span>
-    <h2>Projets</h2>
+    <div class="section-title"><b>02</b><h2>Projets</h2></div>
     <div class="grid">
 
-      <article class="card">
-        <span class="tag">Projet 01 · Python · PySpark · Big Data</span>
-        <h3><a href="projets/f1-pyspark.html">Analyse de données de Formule 1</a></h3>
-        <p>Analyse de données de Formule 1 avec PySpark : notebooks d'exploration, code source et visualisations.</p>
-        <a class="more" href="projets/f1-pyspark.html">Lire le détail →</a>
+      <!-- ----- Projet 01 : F1 ----- -->
+      <article class="card project">
+        <div class="visual">
+          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <polyline points="25,140 90,110 150,125 215,70 280,85 345,40 380,50" fill="none" stroke="#4cc9f0" stroke-width="3" stroke-linejoin="round"/>
+            <polyline points="25,155 90,135 150,150 215,115 280,120 345,90 380,95" fill="none" stroke="#7c83fd" stroke-width="3" stroke-linejoin="round"/>
+            <polyline points="25,170 90,160 150,165 215,145 280,150 345,130 380,135" fill="none" stroke="#ff9f4c" stroke-width="3" stroke-linejoin="round"/>
+            <g fill="#0a0f18" stroke="#4cc9f0" stroke-width="3">
+              <circle cx="215" cy="70" r="6"/><circle cx="345" cy="40" r="6"/>
+            </g>
+            <text x="25" y="30" fill="#8a98b3" font-family="monospace" font-size="12" letter-spacing="2">TEMPS AU TOUR · PYSPARK</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="icon">F1</span>
+            <span class="tag">Projet 01 · Python · PySpark · Big Data</span>
+          </div>
+          <h3><a href="projets/f1-pyspark.html">Analyse de données F1</a></h3>
+          <p class="sub">Données de Formule 1 avec PySpark</p>
+          <p>Exploration et analyse de données de courses de Formule 1 : notebooks, code source et visualisations.</p>
+          <a class="more" href="projets/f1-pyspark.html">Lire le détail →</a>
+        </div>
       </article>
 
-      <article class="card">
-        <span class="tag">Projet 02 · Python · pandas · matplotlib · Groupe</span>
-        <h3><a href="projets/education-emploi.html">Éducation et emploi dans le monde</a></h3>
-        <p>Comment le niveau d'études influence-t-il l'emploi et le chômage selon les pays ? Analyse de données de l'Organisation internationale du Travail.</p>
-        <a class="more" href="projets/education-emploi.html">Lire le détail →</a>
+      <!-- ----- Projet 02 : Éducation / emploi ----- -->
+      <article class="card project">
+        <div class="visual">
+          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g>
+              <rect x="50"  y="120" width="48" height="50"  rx="4" fill="#7c83fd"/>
+              <rect x="120" y="95"  width="48" height="75"  rx="4" fill="#5aa9f0"/>
+              <rect x="190" y="75"  width="48" height="95"  rx="4" fill="#4cc9f0"/>
+              <rect x="260" y="50"  width="48" height="120" rx="4" fill="#3ddc97"/>
+            </g>
+            <polyline points="74,105 144,80 214,60 284,35" fill="none" stroke="#fff" stroke-width="3"/>
+            <g fill="#0a0f18" stroke="#fff" stroke-width="3">
+              <circle cx="74" cy="105" r="6"/><circle cx="144" cy="80" r="6"/><circle cx="214" cy="60" r="6"/><circle cx="284" cy="35" r="6"/>
+            </g>
+            <line x1="35" y1="170" x2="330" y2="170" stroke="#8a98b3" stroke-width="2"/>
+            <text x="335" y="60" fill="#8a98b3" font-family="monospace" font-size="11">EMPLOI</text>
+            <text x="335" y="76" fill="#8a98b3" font-family="monospace" font-size="11">↑</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="icon">Ed</span>
+            <span class="tag">Projet 02 · Python · pandas · matplotlib · Groupe</span>
+          </div>
+          <h3><a href="projets/education-emploi.html">Éducation et emploi</a></h3>
+          <p class="sub">Le niveau d'études, pays par pays</p>
+          <p>Comment le niveau d'études influence-t-il l'emploi et le chômage ? Analyse de données de l'Organisation internationale du Travail.</p>
+          <a class="more" href="projets/education-emploi.html">Lire le détail →</a>
+        </div>
       </article>
 
-      <article class="card">
-        <span class="tag">Projet 03 · Python · Kafka · Docker · Groupe</span>
-        <h3><a href="projets/blood-pressure.html">Surveillance de la pression artérielle</a></h3>
-        <p>Pipeline temps réel avec Kafka : détection d'anomalies de tension sur des données patients simulées au format FHIR.</p>
-        <a class="more" href="projets/blood-pressure.html">Lire le détail →</a>
+      <!-- ----- Projet 03 : Pression artérielle ----- -->
+      <article class="card project">
+        <div class="visual">
+          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <line x1="0" y1="55"  x2="400" y2="55"  stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6 6" opacity=".7"/>
+            <line x1="0" y1="140" x2="400" y2="140" stroke="#3ddc97" stroke-width="1.5" stroke-dasharray="6 6" opacity=".6"/>
+            <polyline points="0,100 50,100 70,100 85,70 100,130 115,100 190,100 210,100 225,70 240,130 255,100 300,100 320,100 335,30 350,150 365,100 400,100"
+                      fill="none" stroke="#4cc9f0" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="335" cy="30" r="14" fill="#ff6b6b"/>
+            <text x="335" y="36" text-anchor="middle" fill="#0a0f18" font-family="monospace" font-size="18" font-weight="700">!</text>
+            <text x="14" y="46" fill="#ff6b6b" font-family="monospace" font-size="11">140 mmHg</text>
+            <text x="14" y="158" fill="#3ddc97" font-family="monospace" font-size="11">90 mmHg</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="icon">Kf</span>
+            <span class="tag">Projet 03 · Python · Kafka · Docker · Groupe</span>
+          </div>
+          <h3><a href="projets/blood-pressure.html">Surveillance de la tension</a></h3>
+          <p class="sub">Détection d'anomalies en temps réel</p>
+          <p>Pipeline Kafka qui analyse des mesures de patients simulées (format FHIR) et déclenche une alerte quand la tension sort des seuils.</p>
+          <a class="more" href="projets/blood-pressure.html">Lire le détail →</a>
+        </div>
       </article>
 
       <!-- Copie une carte pour ajouter un projet (SQL_Python, PageRank, Word2Vec...) -->
@@ -89,46 +173,69 @@
 
   <!-- ========== 03 COMPÉTENCES ========== -->
   <section id="competences">
-    <span class="section-num">03</span>
-    <h2>Compétences et parcours</h2>
+    <div class="section-title"><b>03</b><h2>Compétences et parcours</h2></div>
 
-    <div class="skills">
+    <div class="skills-layout">
       <div>
-        <h3>Langages</h3>
-        <ul class="chips"><li>Python</li><li>SQL</li></ul>
-      </div>
-      <div>
-        <h3>Big Data</h3>
-        <ul class="chips"><li>PySpark</li><li>Kafka</li><li>Docker</li></ul>
-      </div>
-      <div>
-        <h3>Analyse & visualisation</h3>
-        <ul class="chips"><li>pandas</li><li>matplotlib</li><li>Jupyter</li></ul>
-      </div>
-    </div>
+        <span class="label">Langages</span>
+        <ul class="skill-list">
+          <li><span class="icon">Py</span>Python</li>
+          <li><span class="icon">SQL</span>SQL</li>
+        </ul>
 
-    <div class="timeline">
-      <h3>Master BIDABI</h3>
-      <p>Sorbonne Paris Nord · en cours</p>
-      <!-- Ajoute ici ta licence, tes diplômes précédents -->
+        <span class="label">Big Data</span>
+        <ul class="skill-list">
+          <li><span class="icon">Sp</span>PySpark</li>
+          <li><span class="icon">Kf</span>Kafka</li>
+          <li><span class="icon">Dk</span>Docker</li>
+        </ul>
+
+        <span class="label">Analyse &amp; visualisation</span>
+        <ul class="skill-list">
+          <li><span class="icon">pd</span><div>pandas<small>Nettoyage et manipulation de données</small></div></li>
+          <li><span class="icon">mp</span><div>matplotlib<small>Graphiques et visualisations</small></div></li>
+          <li><span class="icon">Jp</span>Jupyter Notebook</li>
+        </ul>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item">
+          <h3>Master BIDABI</h3>
+          <div class="when">Sorbonne Paris Nord · en cours</div>
+          <p>Big Data et analyse de données.</p>
+        </div>
+        <!-- Ajoute ici ta licence ou tes diplômes précédents, en copiant un bloc "t-item" -->
+      </div>
     </div>
   </section>
 
   <!-- ========== 04 CONTACT ========== -->
   <section id="contact">
-    <span class="section-num">04</span>
-    <h2>Me contacter</h2>
-    <p>Une question, une collaboration, un projet ? Écris-moi.</p>
-    <div class="contact-links">
-      <a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
-      <a href="https://www.linkedin.com/in/ton-profil/">LinkedIn</a>
-      <a href="https://github.com/KarissyCISSE21">GitHub</a>
+    <div class="section-title"><b>04</b><h2>Contact</h2></div>
+    <div class="contact-box">
+      <p>Une question, une collaboration, un projet ? Écris-moi.</p>
+      <div class="contact-links">
+        <a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
+        <a href="https://www.linkedin.com/in/ton-profil/">LinkedIn</a>
+        <a href="https://github.com/KarissyCISSE21">GitHub</a>
+      </div>
     </div>
   </section>
 
 </main>
 
 <footer>© 2026 Karissy Cissé</footer>
+
+<script>
+  // Souligne le lien du menu correspondant à la section visible
+  const links = document.querySelectorAll("nav ul a");
+  const sections = [...links].map(a => document.querySelector(a.getAttribute("href")));
+  window.addEventListener("scroll", () => {
+    let current = 0;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 140) current = i; });
+    links.forEach((a, i) => a.classList.toggle("active", i === current));
+  });
+</script>
 
 </body>
 </html>
