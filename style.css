@@ -218,4 +218,36 @@ pre { padding: 14px; overflow-x: auto; color: var(--text); }
   .section-title { gap: 12px; }
 }
 
+/* ===== Centres d'intérêt ===== */
+.interests .project:hover { transform: translateY(-5px); }
+.interests .visual { height: 170px; }
+.interests .card-body p { margin-bottom: 4px; }
+.visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* ===== Pages galerie ===== */
+.visual.multi { display: flex; gap: 2px; }
+.visual.multi img { flex: 1; min-width: 0; width: auto; height: 100%; object-fit: cover; }
+
+.gallery-page { padding-top: 50px; padding-bottom: 70px; }
+.gallery-page h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 8px 0 10px; letter-spacing: -.02em; }
+.gallery-page .section-num { color: var(--accent); font-family: var(--mono); font-size: .85rem; letter-spacing: .08em; }
+.gallery-intro { color: var(--muted); margin-bottom: 30px; max-width: 60ch; }
+.gallery-label { margin-top: 34px; }
+
+.gallery { column-width: 260px; column-gap: 14px; }
+.gallery a {
+  display: block; margin-bottom: 14px; break-inside: avoid;
+  border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.gallery img { width: 100%; height: auto; display: block; transition: transform .3s; }
+.gallery a:hover img { transform: scale(1.04); }
+.gallery a:hover { border-color: var(--accent); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 50; padding: 20px;
+  background: rgba(5, 8, 14, .93);
+  display: none; place-items: center; cursor: zoom-out;
+}
+.lightbox.open { display: grid; }
+.lightbox img { max-width: 100%; max-height: 92vh; border-radius: 10px; }

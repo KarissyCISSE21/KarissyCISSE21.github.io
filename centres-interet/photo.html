@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photographie — Karissy Cissé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="container gallery-page">
+  <a class="back" href="../index.html#contact">← Retour au portfolio</a>
+  <span class="section-num">Centre d'intérêt 01 · Créativité</span>
+  <h1>Photographie</h1>
+  <p class="gallery-intro">Capturer des moments, des paysages et des détails du quotidien.</p>
+  <div class="gallery">
+    <a href="../assets/images/photo1.jpg"><img src="../assets/images/photo1.jpg" alt="Photo 1" loading="lazy"></a>
+    <a href="../assets/images/photo2.jpg"><img src="../assets/images/photo2.jpg" alt="Photo 2" loading="lazy"></a>
+    <a href="../assets/images/photo3.jpg"><img src="../assets/images/photo3.jpg" alt="Photo 3" loading="lazy"></a>
+    <a href="../assets/images/photo4.jpg"><img src="../assets/images/photo4.jpg" alt="Photo 4" loading="lazy"></a>
+    <a href="../assets/images/photo5.jpg"><img src="../assets/images/photo5.jpg" alt="Photo 5" loading="lazy"></a>
+    <a href="../assets/images/photo6.jpg"><img src="../assets/images/photo6.jpg" alt="Photo 6" loading="lazy"></a>
+    <a href="../assets/images/photo7.jpg"><img src="../assets/images/photo7.jpg" alt="Photo 7" loading="lazy"></a>
+    <a href="../assets/images/photo8.jpg"><img src="../assets/images/photo8.jpg" alt="Photo 8" loading="lazy"></a>
+    <a href="../assets/images/photo9.jpg"><img src="../assets/images/photo9.jpg" alt="Photo 9" loading="lazy"></a>
+    <a href="../assets/images/photo10.jpg"><img src="../assets/images/photo10.jpg" alt="Photo 10" loading="lazy"></a>
+    <a href="../assets/images/photo11.jpg"><img src="../assets/images/photo11.jpg" alt="Photo 11" loading="lazy"></a>
+    <a href="../assets/images/photo12.jpg"><img src="../assets/images/photo12.jpg" alt="Photo 12" loading="lazy"></a>
+    <a href="../assets/images/photo13.jpg"><img src="../assets/images/photo13.jpg" alt="Photo 13" loading="lazy"></a>
+    <a href="../assets/images/photo14.jpg"><img src="../assets/images/photo14.jpg" alt="Photo 14" loading="lazy"></a>
+    <a href="../assets/images/photo15.jpg"><img src="../assets/images/photo15.jpg" alt="Photo 15" loading="lazy"></a>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+  // Clic sur une photo : agrandissement. Clic ou Echap : fermeture.
+  const box = document.getElementById("lightbox");
+  const big = box.querySelector("img");
+  document.querySelectorAll(".gallery a").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      big.src = a.getAttribute("href");
+      big.alt = a.querySelector("img").alt;
+      box.classList.add("open");
+    });
+  });
+  box.addEventListener("click", () => box.classList.remove("open"));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") box.classList.remove("open"); });
+</script>
+</body>
+</html>

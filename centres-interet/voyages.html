@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voyages — Karissy Cissé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="container gallery-page">
+  <a class="back" href="../index.html#contact">← Retour au portfolio</a>
+  <span class="section-num">Centre d'intérêt 02 · Découverte</span>
+  <h1>Voyages</h1>
+  <p class="gallery-intro">Découvrir de nouveaux lieux et de nouvelles cultures.</p>
+  <div class="gallery">
+    <a href="../assets/images/voyage1.jpg"><img src="../assets/images/voyage1.jpg" alt="Voyage 1" loading="lazy"></a>
+    <a href="../assets/images/voyage2.jpg"><img src="../assets/images/voyage2.jpg" alt="Voyage 2" loading="lazy"></a>
+    <a href="../assets/images/voyage3.jpg"><img src="../assets/images/voyage3.jpg" alt="Voyage 3" loading="lazy"></a>
+    <a href="../assets/images/voyage4.jpg"><img src="../assets/images/voyage4.jpg" alt="Voyage 4" loading="lazy"></a>
+    <a href="../assets/images/voyage5.jpg"><img src="../assets/images/voyage5.jpg" alt="Voyage 5" loading="lazy"></a>
+    <a href="../assets/images/voyage6.jpg"><img src="../assets/images/voyage6.jpg" alt="Voyage 6" loading="lazy"></a>
+    <a href="../assets/images/voyage7.jpg"><img src="../assets/images/voyage7.jpg" alt="Voyage 7" loading="lazy"></a>
+    <a href="../assets/images/voyage8.jpg"><img src="../assets/images/voyage8.jpg" alt="Voyage 8" loading="lazy"></a>
+    <a href="../assets/images/voyage9.jpg"><img src="../assets/images/voyage9.jpg" alt="Voyage 9" loading="lazy"></a>
+    <a href="../assets/images/voyage10.jpg"><img src="../assets/images/voyage10.jpg" alt="Voyage 10" loading="lazy"></a>
+    <a href="../assets/images/voyage11.jpg"><img src="../assets/images/voyage11.jpg" alt="Voyage 11" loading="lazy"></a>
+    <a href="../assets/images/voyage12.jpg"><img src="../assets/images/voyage12.jpg" alt="Voyage 12" loading="lazy"></a>
+    <a href="../assets/images/voyage13.jpg"><img src="../assets/images/voyage13.jpg" alt="Voyage 13" loading="lazy"></a>
+    <a href="../assets/images/voyage14.jpg"><img src="../assets/images/voyage14.jpg" alt="Voyage 14" loading="lazy"></a>
+    <a href="../assets/images/voyage15.jpg"><img src="../assets/images/voyage15.jpg" alt="Voyage 15" loading="lazy"></a>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+  // Clic sur une photo : agrandissement. Clic ou Echap : fermeture.
+  const box = document.getElementById("lightbox");
+  const big = box.querySelector("img");
+  document.querySelectorAll(".gallery a").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      big.src = a.getAttribute("href");
+      big.alt = a.querySelector("img").alt;
+      box.classList.add("open");
+    });
+  });
+  box.addEventListener("click", () => box.classList.remove("open"));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") box.classList.remove("open"); });
+</script>
+</body>
+</html>

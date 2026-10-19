@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Musique — Karissy Cissé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main class="container gallery-page">
+  <a class="back" href="../index.html#contact">← Retour au portfolio</a>
+  <span class="section-num">Centre d'intérêt 03 · Détente</span>
+  <h1>Musique</h1>
+  <p class="gallery-intro">Une source d'énergie et d'inspiration au quotidien.</p>
+  <div class="gallery">
+    <a href="../assets/images/musique1.png"><img src="../assets/images/musique1.png" alt="Musique 1" loading="lazy"></a>
+    <a href="../assets/images/musique2.png"><img src="../assets/images/musique2.png" alt="Musique 2" loading="lazy"></a>
+    <a href="../assets/images/musique3.png"><img src="../assets/images/musique3.png" alt="Musique 3" loading="lazy"></a>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+  // Clic sur une photo : agrandissement. Clic ou Echap : fermeture.
+  const box = document.getElementById("lightbox");
+  const big = box.querySelector("img");
+  document.querySelectorAll(".gallery a").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      big.src = a.getAttribute("href");
+      big.alt = a.querySelector("img").alt;
+      box.classList.add("open");
+    });
+  });
+  box.addEventListener("click", () => box.classList.remove("open"));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") box.classList.remove("open"); });
+</script>
+</body>
+</html>
