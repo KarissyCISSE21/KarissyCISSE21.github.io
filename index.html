@@ -1,312 +1,1087 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Karissy Cissé — Data & Big Data</title>
-  <meta name="description" content="Portfolio de Karissy Cissé, étudiante en Master 2 Big Data (BIDABI) à Sorbonne Paris Nord. Projets en Python, PySpark, Kafka et analyse de données.">
-  <meta name="theme-color" content="#0A0F18">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Étudiante en Master 2 Big Data (BIDABI) à Sorbonne Paris Nord. Sept projets en SQL, PySpark, Kafka, Python, NLP et Power Platform. Recherche un stage de fin d'études en data à partir de mars 2027.">
+<meta name="color-scheme" content="light dark">
+<title>Karissy Cissé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500&display=swap">
+<style>
+/* ==========================================================================
+   Karissy Cissé — portfolio « Dossiers »
+   Concept : chaque projet est un dossier. Une question en titre, une couleur
+   propre, une figure qui montre la méthode. Le reste de la page reste en
+   encre et papier pour que la couleur serve à repérer les dossiers.
+   Mise en page : colonne unique pleine largeur ; chaque dossier = une
+   couverture colorée (la question) puis un corps à deux colonnes
+   (récit à gauche, figure à droite).
+   ========================================================================== */
 
-  <!-- Aperçu quand tu partages le lien (LinkedIn, WhatsApp...) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Karissy Cissé — Data & Big Data">
-  <meta property="og:description" content="Étudiante en Master 2 Big Data et Intelligence Artificielle (Sorbonne Paris Nord). Projets, compétences et contact.">
-  <meta property="og:image" content="assets/images/apercu-partage.jpg">
+:root {
+  /* Papier et encre (thème clair) */
+  --paper: #EEF0F3;
+  --card: #FFFFFF;
+  --ink: #12151A;
+  --ink-2: #4B5360;
+  --rule: #C8CDD6;
+  --link: #1E3BCB;
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  /* Une couleur par dossier : fond de couverture, texte sur couverture,
+     et teinte « marque » utilisable sur le papier (ajustée en thème sombre) */
+  --c-f1: #F0503A;  --on-f1: #111111;  --m-f1: #D63A24;
+  --c-edu: #2B44D8; --on-edu: #FFFFFF; --m-edu: #2B44D8;
+  --c-bp: #0B7A66;  --on-bp: #FFFFFF;  --m-bp: #0B7A66;
+  --c-pr: #5B2E91;  --on-pr: #FFFFFF;  --m-pr: #5B2E91;
+  --c-w2v: #F29AB8; --on-w2v: #111111; --m-w2v: #C2477A;
+  --c-uni: #F3C614; --on-uni: #111111; --m-uni: #9A7A00;
+  --c-cl: #9CC62B;  --on-cl: #111111;  --m-cl: #5E7F0A;
+
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --gutter: 16px;
+  --max: 1240px;
+  --head-h: 56px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1115; --card: #161A20; --ink: #EDEFF3; --ink-2: #A0A8B4;
+    --rule: #2B323C; --link: #9DB0FF;
+    --m-f1: #FF7A66; --m-edu: #8FA2FF; --m-bp: #3FC1A8; --m-pr: #B795EE; --m-w2v: #F29AB8; --m-uni: #F3C614; --m-cl: #B5DA4A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1115; --card: #161A20; --ink: #EDEFF3; --ink-2: #A0A8B4;
+  --rule: #2B323C; --link: #9DB0FF;
+  --m-f1: #FF7A66; --m-edu: #8FA2FF; --m-bp: #3FC1A8; --m-pr: #B795EE; --m-w2v: #F29AB8; --m-uni: #F3C614; --m-cl: #B5DA4A;
+  color-scheme: dark;
+}
+
+/* Identité de chaque dossier : les composants lisent --c / --on / --cm */
+.d-f1  { --c: var(--c-f1);  --on: var(--on-f1);  --cm: var(--m-f1); }
+.d-edu { --c: var(--c-edu); --on: var(--on-edu); --cm: var(--m-edu); }
+.d-bp  { --c: var(--c-bp);  --on: var(--on-bp);  --cm: var(--m-bp); }
+.d-pr  { --c: var(--c-pr);  --on: var(--on-pr);  --cm: var(--m-pr); }
+.d-w2v { --c: var(--c-w2v); --on: var(--on-w2v); --cm: var(--m-w2v); }
+.d-uni { --c: var(--c-uni); --on: var(--on-uni); --cm: var(--m-uni); }
+.d-cl  { --c: var(--c-cl);  --on: var(--on-cl);  --cm: var(--m-cl); }
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper); color: var(--ink);
+  font: 400 17px/1.6 var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+body::before { /* bande de sécurité sous la barre système du téléphone */
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--paper);
+}
+.shell { max-width: var(--max); margin-inline: auto; }
+h1, h2, h3, p, dl, dd, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.cover :focus-visible, .index-row:focus-visible { outline-color: currentColor; }
+[id] { scroll-margin-top: calc(var(--head-h) + env(safe-area-inset-top, 0px) + 12px); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 8px; top: -60px; background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 50; }
+.skip:focus { top: 8px; }
+
+/* ---------- Barre du haut ---------- */
+.site-head {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px)));
+  padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px));
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.head-in {
+  max-width: var(--max); margin-inline: auto; min-height: var(--head-h);
+  display: flex; align-items: center; gap: 8px 24px; flex-wrap: wrap; padding-block: 8px;
+}
+.brand { font: 500 1.15rem/1 var(--font-serif); color: var(--ink); text-decoration: none; margin-right: auto; }
+.nav { display: flex; gap: 4px 20px; flex-wrap: wrap; font-size: .95rem; }
+.nav a { color: var(--ink-2); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.theme-btn {
+  background: none; border: 1px solid var(--rule); padding: 6px 12px; cursor: pointer; font-size: .9rem; color: var(--ink);
+}
+.theme-btn:hover { border-color: var(--ink); }
+
+/* ---------- Accueil ---------- */
+.hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem); }
+.hero-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; }
+.portrait { display: block; flex: none; width: clamp(96px, 15vw, 190px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--rule); }
+.hero h1 {
+  font: 300 clamp(3.4rem, 1rem + 11.5vw, 10rem)/.88 var(--font-serif);
+  letter-spacing: -.035em; text-wrap: balance;
+}
+.hero-cols {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem); align-items: start;
+}
+.lede { font: 400 clamp(1.25rem, 1rem + 1vw, 1.7rem)/1.4 var(--font-serif); max-width: 34ch; }
+.seeking h2 { font: 700 .95rem/1.3 var(--font-sans); margin-bottom: .35rem; }
+.seeking p { max-width: 38ch; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 1rem; font-size: .95rem; }
+.contact code { font: 500 .9rem var(--font-code); overflow-wrap: anywhere; }
+.btn {
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink);
+  padding: 6px 14px; cursor: pointer; font-size: .9rem;
+}
+.btn:hover { background: transparent; color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn.ghost:hover { border-color: var(--ink); }
+
+/* ---------- Index des dossiers (explorateur) ---------- */
+.index { padding-block: 1rem clamp(3rem, 6vw, 5rem); }
+.index-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 2rem; justify-content: space-between; margin-bottom: 1rem; }
+.index-head h2 { font: 400 1.35rem/1.2 var(--font-serif); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: transparent; border: 1px solid var(--rule); padding: 4px 12px; cursor: pointer; font-size: .9rem; color: var(--ink);
+}
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filter-status { font-size: .9rem; color: var(--ink-2); min-height: 1.5em; margin-bottom: .5rem; width: 100%; }
+.index-list { border-top: 1px solid var(--ink); }
+.index-list li { border-bottom: 1px solid var(--rule); }
+.index-row {
+  display: grid; grid-template-columns: 12px minmax(0, 1fr) minmax(0, 14rem); gap: 0 clamp(1rem, 3vw, 2rem);
+  align-items: center; padding: 1.1rem 0; color: var(--ink); text-decoration: none; position: relative;
+}
+.index-row::before { /* repère de couleur du dossier */
+  content: ""; align-self: stretch; background: var(--c); width: 12px; margin-block: -1.1rem; grid-column: 1;
+}
+.index-row .q { font: 400 clamp(1.3rem, 1rem + 1.6vw, 2.15rem)/1.15 var(--font-serif); letter-spacing: -.01em; text-wrap: balance; grid-column: 2; }
+.index-row .tools { font-size: .9rem; color: var(--ink-2); grid-column: 3; }
+.index-row:hover, .index-row:focus-visible { background: var(--c); color: var(--on); }
+.index-row:hover .tools, .index-row:focus-visible .tools { color: var(--on); }
+.index-row:hover::before, .index-row:focus-visible::before { background: var(--on); }
+.index-list li { transition: opacity .15s ease; }
+.index-list li.is-dim { opacity: .28; }
+.index-list li.is-dim:hover, .index-list li.is-dim:focus-within { opacity: 1; }
+
+/* Seul mouvement automatique de la page : l'index se met en place au chargement */
+@media (prefers-reduced-motion: no-preference) {
+  .index-list li { animation: settle .45s ease both; }
+  .index-list li:nth-child(2) { animation-delay: .05s; }
+  .index-list li:nth-child(3) { animation-delay: .10s; }
+  .index-list li:nth-child(4) { animation-delay: .15s; }
+  .index-list li:nth-child(5) { animation-delay: .20s; }
+  .index-list li:nth-child(6) { animation-delay: .25s; }
+}
+@keyframes settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Dossier : couverture ---------- */
+.dossier { margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); }
+.cover {
+  background: var(--c); color: var(--on);
+  padding: clamp(2.5rem, 6vw, 5rem) max(var(--gutter), env(safe-area-inset-left, 0px));
+}
+.cover-in { max-width: var(--max); margin-inline: auto; display: grid; gap: 1.5rem; }
+.cover .ctx { font-weight: 700; font-size: .95rem; }
+.cover h2 {
+  font: 400 clamp(2.1rem, 1rem + 4.6vw, 4.6rem)/1.04 var(--font-serif);
+  letter-spacing: -.02em; max-width: 21ch; text-wrap: balance;
+}
+.cover-meta { display: flex; flex-wrap: wrap; gap: .5rem 2.5rem; font-size: .95rem; }
+.cover-meta dt { font-weight: 700; display: inline; }
+.cover-meta dt::after { content: " "; }
+.cover-meta dd { display: inline; }
+.cover a { color: var(--on); text-decoration-thickness: 1px; }
+.cover a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- Dossier : récit + figure ---------- */
+.d-body {
+  max-width: var(--max); margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) max(var(--gutter), env(safe-area-inset-left, 0px)) clamp(3rem, 7vw, 5rem);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2.5rem clamp(2rem, 5vw, 5rem);
+}
+.story > div {
+  display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .25rem 1rem;
+  padding-block: 1rem; border-top: 1px solid var(--rule);
+}
+.story > div:first-child { border-top-color: var(--ink); }
+.story dt { font-weight: 700; font-size: .95rem; display: flex; align-items: baseline; gap: .5rem; }
+.story dt::before { content: ""; flex: none; width: .6rem; height: .6rem; background: var(--cm); }
+.story dd { max-width: 58ch; grid-column: 2; }
+.story dd + dd { margin-top: .5rem; }
+.story code, .fig code, .d-body p code { font: 500 .85em var(--font-code); overflow-wrap: anywhere; }
+.todo { color: var(--ink-2); }
+
+.fig { background: var(--card); border: 1px solid var(--rule); padding: clamp(1rem, 2.5vw, 1.5rem); min-width: 0; align-self: start; }
+.fig h3 { font: 700 .95rem/1.3 var(--font-sans); margin-bottom: .25rem; }
+.fig .sub { color: var(--ink-2); font-size: .9rem; margin-bottom: 1rem; max-width: 60ch; }
+.fig figcaption { color: var(--ink-2); font-size: .85rem; margin-top: 1rem; max-width: 62ch; }
+.d-nav {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem;
+  padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: .95rem;
+}
+
+/* ---------- Figures statiques ---------- */
+.tree { font: 500 .9rem/1.7 var(--font-code); overflow-x: auto; }
+.tree .dir { color: var(--cm); font-weight: 700; }
+.tree .ind { padding-left: 1.5rem; display: block; }
+.tree .dim { color: var(--ink-2); }
+.tree .ind2 { padding-left: 3rem; display: block; }
+.facets { display: grid; gap: .6rem; margin-top: 1.25rem; }
+.facets div { padding-left: .75rem; border-left: 3px solid var(--cm); }
+.facets b { display: block; font-size: .95rem; }
+.facets span { font-size: .9rem; color: var(--ink-2); }
+
+.schema { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.schema th, .schema td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.schema th { font-weight: 700; }
+.schema .role { color: var(--ink-2); font-size: .85rem; display: block; font-weight: 400; }
+.schema .on { box-shadow: inset 0 -3px 0 var(--cm); }
+.scroll-x { overflow-x: auto; }
+
+.stack { display: grid; gap: 0; border: 1px solid var(--ink); }
+.stack > div { padding: 1rem; border-top: 1px solid var(--rule); }
+.stack > div:first-child { border-top: 0; }
+.stack .mine { background: var(--c); color: var(--on); border-top-color: var(--c); font-weight: 500; }
+.stack b { display: block; font-size: .95rem; }
+.stack span { font-size: .9rem; }
+
+/* ---------- Démos interactives ---------- */
+.ctrl { display: grid; gap: .9rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-bottom: 1rem; }
+.ctrl label { display: block; font-size: .9rem; font-weight: 700; }
+.ctrl label output { font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; margin-left: .25rem; }
+input[type="range"] { width: 100%; accent-color: var(--cm); margin-top: .35rem; }
+.row-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.seg { display: inline-flex; border: 1px solid var(--ink); }
+.seg button { background: transparent; border: 0; padding: 6px 14px; cursor: pointer; font-size: .9rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.seg button + button { border-left: 1px solid var(--ink); }
+
+.verdict { padding: .75rem 1rem; border: 1px solid var(--ink); margin-bottom: 1rem; }
+.verdict b { display: block; }
+.verdict.alert { background: var(--c-f1); color: #111; border-color: var(--c-f1); }
+.verdict.ok { background: var(--c-bp); color: #fff; border-color: var(--c-bp); }
+.verdict small { font-size: .9rem; }
+
+.plot { width: 100%; height: auto; display: block; }
+.plot text { font: 400 11px var(--font-sans); fill: var(--ink-2); }
+.plot .axis { stroke: var(--ink-2); stroke-width: 1; }
+.plot .grid { stroke: var(--rule); stroke-width: 1; }
+.plot .zone { fill: var(--cm); fill-opacity: .16; stroke: var(--cm); stroke-width: 1.5; }
+.plot .pt { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+
+.flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 500 .8rem var(--font-code); margin-bottom: 1.25rem; }
+.flow span { border: 1px solid var(--ink); padding: 3px 8px; }
+.flow i { font-style: normal; color: var(--ink-2); }
+
+.pr-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.pr-svg { width: 100%; height: auto; display: block; background: var(--paper); border: 1px solid var(--rule); }
+.pr-svg .edge { stroke: var(--rule); stroke-width: .6; fill: none; }
+.pr-svg .edge.in { stroke: var(--cm); stroke-width: 1.4; }
+.pr-svg .edge.out { stroke: var(--ink-2); stroke-width: 1; }
+.pr-svg .edge.faint { opacity: .25; }
+.pr-svg .node { fill: var(--paper); stroke: var(--ink-2); stroke-width: 1; }
+.pr-svg .node.top { fill: var(--cm); stroke: var(--paper); }
+.pr-svg .node.sel { stroke: var(--ink); stroke-width: 2.5; }
+.bars { display: grid; gap: 2px; max-height: 26rem; overflow-y: auto; }
+.bar {
+  display: grid; grid-template-columns: 4.2rem minmax(0, 1fr) 3.6rem; gap: .5rem; align-items: center;
+  background: none; border: 0; padding: 3px 4px; cursor: pointer; text-align: left; font-size: .85rem; font-variant-numeric: tabular-nums;
+}
+.bar:hover, .bar[aria-pressed="true"] { background: var(--paper); }
+.bar .track { height: 10px; background: var(--rule); }
+.bar .fill { display: block; height: 100%; background: var(--cm); }
+.bar .val { text-align: right; color: var(--ink-2); }
+.readout { font-size: .9rem; color: var(--ink-2); margin-top: .75rem; }
+
+.tokens { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.tok { border: 1px solid var(--rule); background: transparent; padding: 6px 12px; cursor: pointer; font-size: 1rem; opacity: .45; }
+.tok.ctx { opacity: 1; border-color: var(--cm); box-shadow: inset 0 -3px 0 var(--cm); }
+.tok.center { opacity: 1; background: var(--c); color: var(--on); border-color: var(--c); font-weight: 700; }
+.pairs { display: grid; gap: 4px; font: 500 .9rem var(--font-code); }
+.pairs div { padding: 4px 8px; border-left: 3px solid var(--cm); background: var(--paper); overflow-wrap: anywhere; }
+
+/* ---------- Parcours, compétences, contact ---------- */
+.band { padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--ink); }
+.band > h2 { font: 400 clamp(1.8rem, 1rem + 2.4vw, 2.8rem)/1.1 var(--font-serif); margin-bottom: 2rem; letter-spacing: -.01em; }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem clamp(2rem, 6vw, 5rem); }
+.cols h3 { font: 700 .95rem var(--font-sans); margin-bottom: 1rem; }
+.tl { display: grid; }
+.tl li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .25rem 1rem; padding-block: .9rem; border-top: 1px solid var(--rule); }
+.tl time { color: var(--ink-2); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.tl b { font-weight: 500; display: block; }
+.tl .where { color: var(--ink-2); font-size: .95rem; }
+.xp { margin-top: .5rem; display: grid; gap: .25rem; padding-left: 1.1rem; list-style: disc; color: var(--ink-2); font-size: .95rem; }
+.xp li { display: list-item; border: 0; padding: 0; }
+
+.skills li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: .25rem 1rem; padding-block: .7rem; border-top: 1px solid var(--rule); align-items: baseline; }
+.skills .name { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.skills .name:hover { text-decoration-thickness: 2px; }
+.skills .used { display: flex; flex-wrap: wrap; gap: .15rem 1rem; font-size: .9rem; }
+.skills .used a { color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; }
+.skills .used a::before { content: ""; width: .6rem; height: .6rem; background: var(--cm); flex: none; }
+.skills .used a:hover { text-decoration: underline; }
+.note { color: var(--ink-2); font-size: .95rem; margin-top: 1rem; max-width: 52ch; }
+.langs { display: grid; gap: .25rem; margin-top: .5rem; }
+.langs b { font-weight: 700; }
+
+.foot { padding-block: clamp(3rem, 6vw, 4.5rem) 2.5rem; border-top: 1px solid var(--ink); }
+.foot h2 { font: 300 clamp(2rem, 1rem + 4vw, 4rem)/1.05 var(--font-serif); letter-spacing: -.02em; max-width: 18ch; margin-bottom: 1.5rem; text-wrap: balance; }
+.foot small { display: block; margin-top: 3rem; color: var(--ink-2); font-size: .85rem; }
+
+.more-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 2rem; }
+.more-links li { border-top: 1px solid var(--rule); }
+.more-links a { display: grid; gap: .15rem; padding: 1rem 0; color: var(--ink); text-decoration: none; }
+.more-links a:hover b { text-decoration: underline; text-decoration-thickness: 2px; }
+.more-links span { color: var(--ink-2); font-size: .95rem; }
+
+/* ---------- Adaptation mobile ---------- */
+@media (max-width: 900px) {
+  .hero-cols, .d-body, .cols, .pr-wrap { grid-template-columns: minmax(0, 1fr); }
+  .hero-top { flex-direction: column-reverse; align-items: flex-start; }
+  .index-row { grid-template-columns: 10px minmax(0, 1fr); }
+  .index-row::before { width: 10px; }
+  .index-row .tools { grid-column: 2; margin-top: .4rem; }
+}
+@media (max-width: 520px) {
+  .story > div, .tl li, .skills li { grid-template-columns: minmax(0, 1fr); }
+  .story dd { grid-column: 1; }
+  .head-in { gap: 0 12px; padding-block: 6px; }
+  .brand { order: 1; }
+  .theme-btn { order: 2; padding: 4px 10px; }
+  .nav { order: 3; flex: 1 0 100%; gap: 2px 16px; flex-wrap: nowrap; overflow-x: auto; }
+  .nav a { white-space: nowrap; }
+  .bar { grid-template-columns: 3.6rem minmax(0, 1fr) 3.2rem; }
+}
+
+[hidden]{display:none!important}
+</style>
 </head>
 <body>
+<a class="skip" href="#dossiers">Aller aux projets</a>
 
-<header>
-  <nav class="container">
-    <a class="logo" href="#accueil">
-      <span class="logo-badge">KC</span>
-      <span class="logo-text">Karissy Cissé</span>
-    </a>
-    <ul>
-      <li><a href="#accueil" class="active">Accueil</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences et parcours</a></li>
-      <li><a href="#contact">À propos et contact</a></li>
-    </ul>
-  </nav>
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="#top">Karissy Cissé</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#dossiers" data-spy="dossiers">Projets</a>
+      <a href="#parcours" data-spy="parcours">Parcours</a>
+      <a href="#competences" data-spy="competences">Compétences</a>
+      <a href="#contact" data-spy="contact">Contact</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-pressed="false">Thème sombre</button>
+  </div>
 </header>
 
-<main class="container">
+<div class="shell" id="top">
+  <main id="main">
 
-  <!-- ========== 01 ACCUEIL ========== -->
-  <section id="accueil">
-    <div class="section-title"><b>01</b><h2>Accueil</h2></div>
-
-    <div class="banner">
-      <div class="banner-top">
-        <div class="tech-chips">
-          <span>Python</span><span>SQL</span><span>PySpark</span><span>Kafka</span>
-        </div>
-        <a class="banner-hint" href="#projets">Voir mes projets ↓</a>
+    <!-- ===== Accueil ===== -->
+    <section class="hero" aria-labelledby="h1">
+      <div class="hero-top">
+        <h1 id="h1">Karissy Cissé</h1>
+        <img class="portrait" src="assets/images/karissy-portrait.jpg" width="240" height="300" alt="Portrait de Karissy Cissé">
       </div>
-      <div>
-        <div class="name-card">Karissy Cissé</div>
-        <p class="banner-role">Étudiante Data · Master Big Data</p>
-      </div>
-    </div>
-
-    <!-- Ta photo : assets/images/karissy.jpg -->
-    <img class="avatar" src="assets/images/karissy.jpg" alt="Portrait de Karissy Cissé">
-
-    <div class="hero-info">
-      <div>
-        <h1>Karissy <span>Cissé</span></h1>
-        <p class="eyebrow">Étudiante en Master 2 Big Data</p>
-        <p class="intro">
-          Je me forme à l'analyse de données, à la data science et au Big Data.
-          J'aime transformer les données en informations, et les informations en
-          décisions utiles.
-        </p>
-        <div class="buttons">
-          <a class="btn primary" href="#projets">Voir mes projets</a>
-          <a class="btn ghost" href="assets/cv/cv-karissy-cisse.pdf">Télécharger mon CV</a>
+      <div class="hero-cols">
+        <p class="lede">Étudiante en Master 2 Big Data, Analyse et Business Intelligence (BIDABI) à Sorbonne Paris Nord, après une licence d'économie et gestion.</p>
+        <div class="seeking">
+          <h2>Je cherche</h2>
+          <p>Un stage de fin d'études à partir de mars 2027 : data analyst, business analyst, data / BI.</p>
+          <div class="contact">
+            <code id="mail">zeinabcisse590@gmail.com</code>
+            <button class="btn" id="copy" type="button">Copier l'adresse</button>
+            <a href="https://www.linkedin.com/in/karissy-cisse-2337b7347" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/KarissyCISSE21" target="_blank" rel="noopener">GitHub</a>
+            <a href="assets/cv/cv-karissy-cisse.pdf">Télécharger mon CV (PDF)</a>
+          </div>
+          <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
         </div>
       </div>
-      <ul class="facts">
-        <li><strong>MASTER BIDABI</strong><span>Sorbonne Paris Nord</span></li>
-        <li><strong>PYTHON · PYSPARK</strong><span>Analyse &amp; Big Data</span></li>
-        <li><strong>3 PROJETS</strong><span>Dont 2 en groupe</span></li>
-        <li><strong>Stage</strong><span>Recherché. 6 Mois à partir de Mars 2027</span></li>
+    </section>
+
+    <span id="projets"></span>
+    <!-- ===== Index : l'explorateur de projets ===== -->
+    <section class="index" id="dossiers" aria-labelledby="idx-title">
+      <div class="index-head">
+        <h2 id="idx-title">Sept questions que j'ai travaillées</h2>
+        <div class="filters" role="group" aria-label="Filtrer les projets par outil">
+          <button class="chip" type="button" data-filter="sql" aria-pressed="false">SQL</button>
+          <button class="chip" type="button" data-filter="python" aria-pressed="false">Python</button>
+          <button class="chip" type="button" data-filter="pyspark" aria-pressed="false">PySpark</button>
+          <button class="chip" type="button" data-filter="kafka" aria-pressed="false">Kafka</button>
+          <button class="chip" type="button" data-filter="nlp" aria-pressed="false">NLP</button>
+          <button class="chip" type="button" data-filter="graphes" aria-pressed="false">Graphes</button>
+          <button class="chip" type="button" data-filter="power" aria-pressed="false">Power Platform</button>
+        </div>
+        <p class="filter-status" id="filter-status" role="status" aria-live="polite">Sept projets. Choisis un outil pour voir où je l'ai utilisé.</p>
+      </div>
+      <ul class="index-list" id="index-list">
+        <li class="d-cl"   data-tags="sql python pandas"><a class="index-row" href="#classicmodels"><span class="q">Quels produits, clients et périodes font le chiffre d'affaires d'un vendeur de modèles réduits ?</span><span class="tools">SQL (MySQL), Python, pandas</span></a></li>
+        <li class="d-f1"   data-tags="python pyspark"><a class="index-row" href="#formule-1"><span class="q">Comment analyser l'ensemble des courses de Formule 1 avec un calcul distribué ?</span><span class="tools">Python, PySpark</span></a></li>
+        <li class="d-edu"  data-tags="python pandas"><a class="index-row" href="#education-emploi"><span class="q">Le niveau d'éducation change-t-il l'emploi et le chômage d'un pays à l'autre ?</span><span class="tools">Python, pandas, matplotlib</span></a></li>
+        <li class="d-bp"   data-tags="python kafka docker"><a class="index-row" href="#pression-arterielle"><span class="q">Comment repérer une tension anormale dans un flux continu de mesures ?</span><span class="tools">Python, Kafka, Docker</span></a></li>
+        <li class="d-pr"   data-tags="python graphes networkx"><a class="index-row" href="#pagerank"><span class="q">Quelles pages d'un site sont les plus populaires, d'après les liens qu'elles reçoivent ?</span><span class="tools">Python, NetworkX</span></a></li>
+        <li class="d-w2v"  data-tags="python nlp gensim"><a class="index-row" href="#word2vec"><span class="q">Quels mots un modèle place-t-il côte à côte dans des résumés de films et des avis de smartphones ?</span><span class="tools">Python, Gensim</span></a></li>
+        <li class="d-uni"  data-tags="power"><a class="index-row" href="#unigo"><span class="q">Comment organiser le covoiturage entre étudiants de Sorbonne Paris Nord ?</span><span class="tools">Power Platform, Power Automate</span></a></li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== 02 PROJETS ========== -->
-  <section id="projets">
-    <div class="section-title"><b>02</b><h2>Projets</h2></div>
-    <div class="grid">
-
-      <!-- ----- Projet 01 : F1 ----- -->
-      <article class="card project">
-        <div class="visual">
-          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <polyline points="25,140 90,110 150,125 215,70 280,85 345,40 380,50" fill="none" stroke="#4cc9f0" stroke-width="3" stroke-linejoin="round"/>
-            <polyline points="25,155 90,135 150,150 215,115 280,120 345,90 380,95" fill="none" stroke="#7c83fd" stroke-width="3" stroke-linejoin="round"/>
-            <polyline points="25,170 90,160 150,165 215,145 280,150 345,130 380,135" fill="none" stroke="#ff9f4c" stroke-width="3" stroke-linejoin="round"/>
-            <g fill="#0a0f18" stroke="#4cc9f0" stroke-width="3">
-              <circle cx="215" cy="70" r="6"/><circle cx="345" cy="40" r="6"/>
-            </g>
-            <text x="25" y="30" fill="#8a98b3" font-family="monospace" font-size="12" letter-spacing="2">TEMPS AU TOUR · PYSPARK</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">F1</span>
-            <span class="tag">Projet 01 · Python · PySpark · Big Data</span>
+    <!-- ===== Dossier 0 : ClassicModels ===== -->
+    <article class="dossier d-cl" id="classicmodels" aria-labelledby="t-cl">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">Projet du cours Data Analysis &amp; SQL</p>
+        <h2 id="t-cl">Quels produits, clients et périodes font le chiffre d'affaires d'un vendeur de modèles réduits ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>SQL (MySQL), Python, pandas, matplotlib, seaborn</dd></div>
+          <div><dt>Code</dt><dd><a href="https://github.com/KarissyCISSE21/classicmodels-analysis" target="_blank" rel="noopener">classicmodels-analysis</a></dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>La base ClassicModels, celle d'une entreprise qui vend des modèles réduits. Elle s'installe dans MySQL avec <code>mysqlsampledatabase.sql</code>, et son modèle relationnel est dans <code>classicmodels_model.mwb</code>.</dd></div>
+          <div><dt>Méthode</dt><dd>Du SQL pour extraire : cinq fichiers de requêtes sur les ventes, les clients, les produits et le temps. Puis du Python (pandas, matplotlib, seaborn) dans un notebook pour les analyses avancées, avec une connexion directe à MySQL.</dd><dd>Une partie automatisation en SQL : procédures stockées, triggers et fonctions pour calculer les commissions et signaler les stocks bas, validées par un fichier de tests.</dd></div>
+          <div><dt>Résultat</dt><dd>Des graphiques d'évolution du chiffre d'affaires et de répartition géographique dans <code>visualizations/</code>, des exports CSV et Excel dans <code>src/exports/</code>. <!-- À COMPLÉTER : retire l'attribut hidden et écris ta vraie conclusion --><span class="todo" hidden>Conclusion chiffrée à ajouter ici.</span></dd></div>
+          <div><dt>Portée</dt><dd>Le cycle complet d'un analyste, du SQL à la visualisation : extraire, automatiser et tester, puis analyser. C'est le projet qui prouve mon SQL.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>Du SQL à Python, fichier par fichier</h3>
+          <p class="sub">Le dépôt suit le même ordre que l'analyse.</p>
+          <div class="tree" role="img" aria-label="Arborescence : requêtes SQL 01 à 05, 06 automatisations, 07 tests, notebooks, visualisations, exports">
+            <span class="dir">classicmodels-analysis/</span>
+            <span class="ind"><span class="dir">database/queries/</span></span>
+            <span class="ind2">01 à 05 <span class="dim">requêtes d'analyse</span></span>
+            <span class="ind2">06_automations.sql <span class="dim">procédures, triggers, fonctions</span></span>
+            <span class="ind2">07_tests_validation.sql <span class="dim">tests des automatisations</span></span>
+            <span class="ind"><span class="dir">notebooks/</span> <span class="dim">analyses Python</span></span>
+            <span class="ind"><span class="dir">visualizations/</span> <span class="dim">graphiques PNG</span></span>
+            <span class="ind"><span class="dir">src/exports/</span> <span class="dim">CSV, Excel</span></span>
           </div>
-          <h3><a href="projets/f1-pyspark.html">Analyse de données F1</a></h3>
-          <p class="sub">Données de Formule 1 avec PySpark</p>
-          <p>Exploration et analyse de données de courses de Formule 1 : notebooks, code source et visualisations.</p>
-          <a class="more" href="projets/f1-pyspark.html">Lire le détail →</a>
-        </div>
-      </article>
-
-      <!-- ----- Projet 02 : Éducation / emploi ----- -->
-      <article class="card project">
-        <div class="visual">
-          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g>
-              <rect x="50"  y="120" width="48" height="50"  rx="4" fill="#7c83fd"/>
-              <rect x="120" y="95"  width="48" height="75"  rx="4" fill="#5aa9f0"/>
-              <rect x="190" y="75"  width="48" height="95"  rx="4" fill="#4cc9f0"/>
-              <rect x="260" y="50"  width="48" height="120" rx="4" fill="#3ddc97"/>
-            </g>
-            <polyline points="74,105 144,80 214,60 284,35" fill="none" stroke="#fff" stroke-width="3"/>
-            <g fill="#0a0f18" stroke="#fff" stroke-width="3">
-              <circle cx="74" cy="105" r="6"/><circle cx="144" cy="80" r="6"/><circle cx="214" cy="60" r="6"/><circle cx="284" cy="35" r="6"/>
-            </g>
-            <line x1="35" y1="170" x2="330" y2="170" stroke="#8a98b3" stroke-width="2"/>
-            <text x="335" y="60" fill="#8a98b3" font-family="monospace" font-size="11">EMPLOI</text>
-            <text x="335" y="76" fill="#8a98b3" font-family="monospace" font-size="11">↑</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">Ed</span>
-            <span class="tag">Projet 02 · Python · pandas · matplotlib · Groupe</span>
+          <div class="facets">
+            <div><b>Segmentation client RFM</b><span>Classe les clients selon la date de leur dernier achat, leur nombre de commandes et ce qu'ils dépensent.</span></div>
+            <div><b>Saisonnalité des ventes</b><span>Repère les périodes de l'année où les ventes montent ou baissent.</span></div>
+            <div><b>Corrélation prix et quantité</b><span>Mesure si les produits plus chers se vendent en plus petites quantités.</span></div>
+            <div><b>Cross-selling</b><span>Trouve les produits achetés ensemble.</span></div>
           </div>
-          <h3><a href="projets/education-emploi.html">Éducation et emploi</a></h3>
-          <p class="sub">Le niveau d'études, pays par pays</p>
-          <p>Comment le niveau d'études influence-t-il l'emploi et le chômage ? Analyse de données de l'Organisation internationale du Travail.</p>
-          <a class="more" href="projets/education-emploi.html">Lire le détail →</a>
-        </div>
-      </article>
-
-      <!-- ----- Projet 03 : Pression artérielle ----- -->
-      <article class="card project">
-        <div class="visual">
-          <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <line x1="0" y1="55"  x2="400" y2="55"  stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6 6" opacity=".7"/>
-            <line x1="0" y1="140" x2="400" y2="140" stroke="#3ddc97" stroke-width="1.5" stroke-dasharray="6 6" opacity=".6"/>
-            <polyline points="0,100 50,100 70,100 85,70 100,130 115,100 190,100 210,100 225,70 240,130 255,100 300,100 320,100 335,30 350,150 365,100 400,100"
-                      fill="none" stroke="#4cc9f0" stroke-width="3" stroke-linejoin="round"/>
-            <circle cx="335" cy="30" r="14" fill="#ff6b6b"/>
-            <text x="335" y="36" text-anchor="middle" fill="#0a0f18" font-family="monospace" font-size="18" font-weight="700">!</text>
-            <text x="14" y="46" fill="#ff6b6b" font-family="monospace" font-size="11">140 mmHg</text>
-            <text x="14" y="158" fill="#3ddc97" font-family="monospace" font-size="11">90 mmHg</text>
-          </svg>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">Kf</span>
-            <span class="tag">Projet 03 · Python · Kafka · Docker · Groupe</span>
-          </div>
-          <h3><a href="projets/blood-pressure.html">Surveillance de la tension</a></h3>
-          <p class="sub">Détection d'anomalies en temps réel</p>
-          <p>Pipeline Kafka qui analyse des mesures de patients simulées (format FHIR) et déclenche une alerte quand la tension sort des seuils.</p>
-          <a class="more" href="projets/blood-pressure.html">Lire le détail →</a>
-        </div>
-      </article>
-
-      <!-- Copie une carte pour ajouter un projet (SQL_Python, PageRank, Word2Vec...) -->
-
-    </div>
-  </section>
-
-  <!-- ========== 03 COMPÉTENCES ========== -->
-  <section id="competences">
-    <div class="section-title"><b>03</b><h2>Compétences et parcours</h2></div>
-
-    <div class="skills-layout">
-      <div>
-        <span class="label">Langages</span>
-        <ul class="skill-list">
-          <li><span class="icon">Py</span>Python</li>
-          <li><span class="icon">SQL</span>SQL</li>
-          <li><span class="icon">R</span>R</li>
-        </ul>
-
-        <span class="label">Big Data</span>
-        <ul class="skill-list">
-          <li><span class="icon">Sp</span>PySpark</li>
-          <li><span class="icon">Kf</span>Kafka</li>
-          <li><span class="icon">Dk</span>Docker</li>
-        </ul>
-
-        <span class="label">Analyse &amp; visualisation</span>
-        <ul class="skill-list">
-          <li><span class="icon">pd</span><div>pandas<small>Nettoyage et manipulation de données</small></div></li>
-          <li><span class="icon">mp</span><div>matplotlib<small>Graphiques et visualisations</small></div></li>
-          <li><span class="icon">Jp</span>Jupyter Notebook</li>
-          <li><span class="icon">PBI</span>PowerBI</li>
-        </ul>
+          <figcaption>Structure et analyses relevées dans le README du dépôt.</figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#formule-1">Projet suivant : Formule 1</a></nav>
       </div>
+    </article>
 
-      <div class="timeline">
-        <div class="t-item">
-          <h3>Master 2 BIDABI</h3>
-          <div class="when">Sorbonne Paris Nord · en cours</div>
-          <p>Big Data et Intelligence Artificielle.</p>
-        </div>
-        <div class="t-item">
-          <h3>Master 1 BIDABI</h3>
-          <div class="when">Sorbonne Paris Nord · diplôme obtenu</div>
-          <p>Big Data et Intelligence Artificielle.</p>
-        </div>
-        <div class="t-item">
-          <h3>Licence de droit,Économie,gestion mention Économie et gestion parcours Économie,Finance,Entreprise</h3>
-          <div class="when">Sorbonne Paris Nord . diplôme obtenu</div>
-    </div>
-   </div>
-   </div>
-  </section>
-
-  <!-- ========== 04 À PROPOS ET CONTACT ========== -->
-  <section id="contact">
-    <div class="section-title"><b>04</b><h2>À propos et contact</h2></div>
-
-    <span class="label">Centres d'intérêt</span>
-    <div class="grid interests">
-
-      <article class="card project">
-        <div class="visual multi">
-          <img src="assets/images/photo1.jpg" alt="Photographie 1" loading="lazy">
-          <img src="assets/images/photo2.jpg" alt="Photographie 2" loading="lazy">
-          <img src="assets/images/photo3.jpg" alt="Photographie 3" loading="lazy">
-          <img src="assets/images/photo4.jpg" alt="Photographie 4" loading="lazy">
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">01</span>
-            <span class="tag">Centre d'intérêt 01 · Créativité</span>
+    <!-- ===== Dossier 1 : Formule 1 ===== -->
+    <article class="dossier d-f1" id="formule-1" aria-labelledby="t-f1">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">Projet GitHub</p>
+        <h2 id="t-f1">Comment analyser l'ensemble des courses de Formule 1 avec un calcul distribué ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Python, PySpark</dd></div>
+          <div><dt>Code</dt><dd><a href="https://github.com/KarissyCISSE21/f1-pyspark-analysis" target="_blank" rel="noopener">f1-pyspark-analysis</a></dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Données de courses de Formule 1, rangées dans le dossier <code>data/</code> du dépôt.</dd></div>
+          <div><dt>Méthode</dt><dd>PySpark traite l'ensemble des données en calcul distribué : Spark découpe les données en partitions et les traite en parallèle. Les notebooks portent l'analyse, <code>src/</code> le code réutilisable.</dd></div>
+          <div><dt>Résultat</dt><dd>Les graphiques produits sont dans le dossier <code>visualisations/</code> du dépôt. <!-- À COMPLÉTER : retire l'attribut hidden et écris ta vraie conclusion --><span class="todo" hidden>Conclusion chiffrée à ajouter ici.</span></dd></div>
+          <div><dt>Portée</dt><dd>Mise en pratique de PySpark sur un cas concret, avec une organisation de projet claire : données, code, notebooks, graphiques.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>Contenu du dépôt</h3>
+          <p class="sub">Chaque dossier correspond à une étape du travail.</p>
+          <div class="tree" role="img" aria-label="Arborescence : data, notebooks, src, visualisations, requirements.txt, README.md">
+            <span class="dir">f1-pyspark-analysis/</span>
+            <span class="ind"><span class="dir">data/</span> <span class="dim">jeux de données</span></span>
+            <span class="ind"><span class="dir">notebooks/</span> <span class="dim">analyse</span></span>
+            <span class="ind"><span class="dir">src/</span> <span class="dim">code</span></span>
+            <span class="ind"><span class="dir">visualisations/</span> <span class="dim">graphiques</span></span>
+            <span class="ind">requirements.txt</span>
+            <span class="ind">README.md</span>
           </div>
-          <h3><a href="centres-interet/photo.html">Photographie</a></h3>
-          <p>Capturer des moments, des paysages et des détails du quotidien.</p>
-          <a class="more" href="centres-interet/photo.html">Découvrir →</a>
-        </div>
-      </article>
-
-      <article class="card project">
-        <div class="visual multi">
-          <img src="assets/images/voyage1.jpg" alt="Voyages 1" loading="lazy">
-          <img src="assets/images/voyage2.jpg" alt="Voyages 2" loading="lazy">
-          <img src="assets/images/voyage3.jpg" alt="Voyages 3" loading="lazy">
-          <img src="assets/images/voyage4.jpg" alt="Voyages 4" loading="lazy">
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">02</span>
-            <span class="tag">Centre d'intérêt 02 · Découverte</span>
-          </div>
-          <h3><a href="centres-interet/voyages.html">Voyages</a></h3>
-          <p>Découvrir de nouveaux lieux et de nouvelles cultures.</p>
-          <a class="more" href="centres-interet/voyages.html">Découvrir →</a>
-        </div>
-      </article>
-
-      <article class="card project">
-        <div class="visual multi">
-          <img src="assets/images/musique1.png" alt="Musique 1" loading="lazy">
-          <img src="assets/images/musique2.png" alt="Musique 2" loading="lazy">
-          <img src="assets/images/musique3.png" alt="Musique 3" loading="lazy">
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="icon">03</span>
-            <span class="tag">Centre d'intérêt 03 · Détente</span>
-          </div>
-          <h3><a href="centres-interet/musique.html">Musique</a></h3>
-          <p>Une source d'énergie et d'inspiration au quotidien.</p>
-          <a class="more" href="centres-interet/musique.html">Découvrir →</a>
-        </div>
-      </article>
-
-    </div>
-
-    <span class="label" style="margin-top:50px">Me contacter</span>
-    <div class="contact-box">
-      <p>Une question, une collaboration, un projet ? Écris-moi.</p>
-      <div class="contact-links">
-        <a href="mailto:zeinabcisse@yahoo.com">zeinabcisse@yahoo.com</a>
-        <a href="https://www.linkedin.com/in/karissy-cisse-2337b7347">LinkedIn</a>
-        <a href="https://github.com/KarissyCISSE21">GitHub</a>
+          <figcaption>Arborescence relevée sur GitHub. Le dépôt est un fork d'un dépôt existant.</figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#education-emploi">Projet suivant : éducation et emploi</a></nav>
       </div>
-    </div>
-  </section>
+    </article>
 
-</main>
+    <!-- ===== Dossier 2 : Éducation et emploi ===== -->
+    <article class="dossier d-edu" id="education-emploi" aria-labelledby="t-edu">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">Projet de groupe, avec Palla Gueye</p>
+        <h2 id="t-edu">Le niveau d'éducation change-t-il l'emploi et le chômage d'un pays à l'autre ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Python, pandas, matplotlib</dd></div>
+          <div><dt>Code</dt><dd><a href="https://github.com/KarissyCISSE21/education-employment-analysis" target="_blank" rel="noopener">education-employment-analysis</a></dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Données internationales de l'Organisation internationale du travail (OIT), dans <code>ilo_cleaned_final.csv</code>. Nettoyage minimal, pour garder le plus d'information possible.</dd></div>
+          <div><dt>Méthode</dt><dd>Analyse exploratoire en Python avec pandas, figures avec matplotlib, dans des notebooks.</dd></div>
+          <div><dt>Résultat</dt><dd>Les figures du projet sont dans le dossier <code>figures/</code> du dépôt. <!-- À COMPLÉTER : retire l'attribut hidden et écris ta vraie conclusion --><span class="todo" hidden>Conclusion chiffrée à ajouter ici.</span></dd></div>
+          <div><dt>Portée</dt><dd>Une question classique d'économie du travail, traitée avec des données internationales. Le projet relie ma licence d'économie à mon travail sur les données.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>Les colonnes du fichier, et la question posée</h3>
+          <p class="sub">Le projet cherche l'effet du niveau d'éducation sur l'emploi.</p>
+          <div class="scroll-x">
+          <table class="schema">
+            <thead><tr><th scope="col">Pays</th><th scope="col">Année</th><th scope="col" class="on">Niveau d'éducation<span class="role">ce qu'on fait varier</span></th><th scope="col" class="on">Taux d'emploi<span class="role">ce qu'on cherche à expliquer</span></th></tr></thead>
+            <tbody><tr><td>une ligne par pays</td><td>et par année</td><td>et par niveau</td><td>taux observé</td></tr></tbody>
+          </table>
+          </div>
+          <figcaption>Variables listées dans le README du projet. Le graphique n'est pas montré ici : je n'invente pas de valeurs. Les vraies figures sont dans le dépôt.</figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#pression-arterielle">Projet suivant : pression artérielle</a></nav>
+      </div>
+    </article>
 
-<footer>© 2026 Karissy Cissé</footer>
+    <!-- ===== Dossier 3 : Pression artérielle ===== -->
+    <article class="dossier d-bp" id="pression-arterielle" aria-labelledby="t-bp">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">Projet de groupe, Master 1 BIDABI</p>
+        <h2 id="t-bp">Comment repérer une tension anormale dans un flux continu de mesures ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Python, Kafka, Docker</dd></div>
+          <div><dt>Code</dt><dd><a href="https://github.com/KarissyCISSE21/blood_pressure-project" target="_blank" rel="noopener">blood_pressure-project</a></dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Mesures de tension simulées, au format FHIR (le standard d'échange de données de santé), produites par <code>generate_fhir.py</code>. Aucune donnée de vrais patients.</dd></div>
+          <div><dt>Méthode</dt><dd>Un producteur envoie les messages dans Kafka, lancé avec Docker. Un consommateur les lit un par un et classe chaque patient. Il y a alerte si la systolique dépasse 140 ou passe sous 90 mmHg, ou si la diastolique dépasse 90 ou passe sous 60 mmHg.</dd></div>
+          <div><dt>Résultat</dt><dd>Les patients normaux vont dans <code>donnees_normales.json</code>, les cas à risque dans <code>alertes_hypertension.json</code>, et un journal technique dans <code>anomalies.json</code>.</dd></div>
+          <div><dt>Portée</dt><dd>Le projet couvre toute la chaîne d'un flux de données : génération, transport, traitement, stockage. Ma part : l'analyse et le traitement. Havar a fait la génération et Kafka, Palla la documentation et la data science.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>Teste la règle d'alerte</h3>
+          <p class="sub">Déplace les curseurs : le point passe dans la zone normale ou en dehors, comme le fait le consommateur.</p>
+          <div class="flow" aria-label="Chaîne de traitement"><span>generate_fhir.py</span><i>→</i><span>producer.py</span><i>→</i><span>Kafka (Docker)</span><i>→</i><span>consumer.py</span><i>→</i><span>JSON</span></div>
+          <div class="ctrl">
+            <div><label for="bp-sys">Systolique <output id="bp-sys-out">120 mmHg</output></label><input id="bp-sys" type="range" min="60" max="200" step="1" value="120"></div>
+            <div><label for="bp-dia">Diastolique <output id="bp-dia-out">80 mmHg</output></label><input id="bp-dia" type="range" min="40" max="130" step="1" value="80"></div>
+          </div>
+          <div class="row-btns" role="group" aria-label="Exemples">
+            <button class="chip" type="button" data-bp="120,80">Normale</button>
+            <button class="chip" type="button" data-bp="150,85">Systolique haute</button>
+            <button class="chip" type="button" data-bp="110,55">Diastolique basse</button>
+          </div>
+          <div class="verdict ok" id="bp-verdict" role="status" aria-live="polite"><b>Normale</b><small>Écrite dans donnees_normales.json</small></div>
+          <svg class="plot" id="bp-plot" viewBox="0 0 400 290" role="img" aria-label="Plan diastolique en abscisse, systolique en ordonnée, avec la zone normale en couleur et la mesure choisie en noir"></svg>
+          <figcaption>Règle reprise du README. Les valeurs du curseur sont des exemples, pas des données du projet.</figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#pagerank">Projet suivant : PageRank</a></nav>
+      </div>
+    </article>
+
+    <!-- ===== Dossier 4 : PageRank ===== -->
+    <article class="dossier d-pr" id="pagerank" aria-labelledby="t-pr">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">TP de Master Big Data, Sorbonne Paris Nord</p>
+        <h2 id="t-pr">Quelles pages d'un site sont les plus populaires, d'après les liens qu'elles reçoivent ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Python, NetworkX, Google Colab</dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Deux graphes. Un graphe orienté aléatoire de N nœuds, avec N entre 50 et 100. Puis les pages du site de l'université, récupérées par scraping et limitées à 300 pages.</dd></div>
+          <div><dt>Méthode</dt><dd>PageRank calculé avec NetworkX, facteur d'amortissement 0,85, dans un notebook Google Colab.</dd></div>
+          <div><dt>Résultat</dt><dd>Le notebook représente les 20 nœuds les plus populaires du graphe aléatoire et liste les 20 pages les plus populaires du site.</dd></div>
+          <div><dt>Portée</dt><dd>Un lien reçu d'une page déjà populaire pèse plus qu'un lien isolé. La démo ci-contre permet de le voir sur un graphe généré dans ta page.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>PageRank sur un graphe aléatoire</h3>
+          <p class="sub">Le graphe est tiré au hasard dans ton navigateur, avec une préférence pour les nœuds déjà cités. Ce ne sont pas les résultats du TP. Plus un nœud est au centre, plus son rang est élevé. Survole ou sélectionne un nœud de la liste pour voir qui le cite.</p>
+          <div class="ctrl">
+            <div><label for="pr-n">Nombre de nœuds <output id="pr-n-out">60</output></label><input id="pr-n" type="range" min="50" max="100" step="1" value="60"></div>
+            <div><label for="pr-a">Facteur d'amortissement <output id="pr-a-out">0,85</output></label><input id="pr-a" type="range" min="0.5" max="0.99" step="0.01" value="0.85"></div>
+          </div>
+          <div class="row-btns"><button class="btn" type="button" id="pr-new">Tirer un nouveau graphe</button></div>
+          <div class="pr-wrap">
+            <svg class="pr-svg" id="pr-svg" viewBox="0 0 400 400" role="img" aria-label="Graphe de nœuds : les nœuds les mieux classés au centre"></svg>
+            <div>
+              <div class="bars" id="pr-bars" role="group" aria-label="Les 20 nœuds les mieux classés"></div>
+            </div>
+          </div>
+          <p class="readout" id="pr-readout" role="status" aria-live="polite"></p>
+          <figcaption>Le facteur d'amortissement est la probabilité de suivre un lien plutôt que de sauter vers une page au hasard. Le TP utilisait 0,85.</figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#word2vec">Projet suivant : Word2Vec</a></nav>
+      </div>
+    </article>
+
+    <!-- ===== Dossier 5 : Word2Vec ===== -->
+    <article class="dossier d-w2v" id="word2vec" aria-labelledby="t-w2v">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">TP de Master Big Data, Sorbonne Paris Nord</p>
+        <h2 id="t-w2v">Quels mots un modèle place-t-il côte à côte dans des résumés de films et des avis de smartphones ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Python, Gensim, Google Colab</dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Deux corpus : des résumés de films (Kaggle, the-movies-dataset) et des avis clients de smartphones (Amazon, <code>reviews_Cell_Phones_and_Accessories_5</code>).</dd></div>
+          <div><dt>Méthode</dt><dd>Nettoyage et tokenisation, puis entraînement de Word2Vec avec Gensim, en CBOW et en Skip-gram.</dd></div>
+          <div><dt>Résultat</dt><dd>Pour les deux corpus, j'ai obtenu les mots les plus proches de mots choisis, avec les deux architectures.</dd></div>
+          <div><dt>Portée</dt><dd>Le TP demandait un rapport en deux parties : le modèle, puis ses performances en pratique. La démo ci-contre montre ce que chaque architecture apprend d'une phrase.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>CBOW ou Skip-gram : ce que le modèle lit</h3>
+          <p class="sub">Choisis un mot central et la taille de la fenêtre. Phrase d'exemple écrite pour cette démo.</p>
+          <div class="row-btns">
+            <div class="seg" role="group" aria-label="Architecture">
+              <button type="button" id="w2v-cbow" aria-pressed="true">CBOW</button>
+              <button type="button" id="w2v-sg" aria-pressed="false">Skip-gram</button>
+            </div>
+          </div>
+          <div class="ctrl"><div><label for="w2v-win">Fenêtre (<code>window</code>) <output id="w2v-win-out">2</output></label><input id="w2v-win" type="range" min="1" max="4" step="1" value="2"></div></div>
+          <div class="tokens" id="w2v-tokens" role="group" aria-label="Mots de la phrase : choisis le mot central"></div>
+          <div class="pairs" id="w2v-pairs" role="status" aria-live="polite"></div>
+          <figcaption id="w2v-explain"></figcaption>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#unigo">Projet suivant : UniGo</a></nav>
+      </div>
+    </article>
+
+    <!-- ===== Dossier 6 : UniGo ===== -->
+    <article class="dossier d-uni" id="unigo" aria-labelledby="t-uni">
+      <div class="cover"><div class="cover-in">
+        <p class="ctx">Projet de Master, présenté devant un jury</p>
+        <h2 id="t-uni">Comment organiser le covoiturage entre étudiants de Sorbonne Paris Nord ?</h2>
+        <dl class="cover-meta">
+          <div><dt>Outils</dt><dd>Microsoft Power Platform, Power Automate</dd></div>
+        </dl>
+      </div></div>
+      <div class="d-body">
+        <dl class="story">
+          <div><dt>Données</dt><dd>Projet d'application, pas d'analyse d'un jeu de données.</dd></div>
+          <div><dt>Méthode</dt><dd>UniGo est une application de covoiturage réservée aux étudiants de Sorbonne Paris Nord, construite sur Microsoft Power Platform. J'ai conçu la couche d'automatisation avec Power Automate.</dd></div>
+          <div><dt>Résultat</dt><dd>Le projet a été présenté devant un jury.</dd></div>
+          <div><dt>Portée</dt><dd>Un travail d'automatisation de processus, qui complète mes projets d'analyse de données.</dd></div>
+        </dl>
+        <figure class="fig">
+          <h3>Où se situe ma contribution</h3>
+          <p class="sub">Les couches d'UniGo, de l'application à l'automatisation.</p>
+          <div class="stack">
+            <div><b>Application UniGo</b><span>Covoiturage réservé aux étudiants de Sorbonne Paris Nord, sur Microsoft Power Platform.</span></div>
+            <div class="mine"><b>Couche d'automatisation : ma contribution</b><span>Conçue avec Power Automate.</span></div>
+            <div><b>Soutenance</b><span>Présentation devant un jury.</span></div>
+          </div>
+        </figure>
+        <nav class="d-nav" aria-label="Navigation entre projets"><a href="#dossiers">Retour à l'index</a><a href="#parcours">Parcours</a></nav>
+      </div>
+    </article>
+
+    <!-- ===== Parcours ===== -->
+    <section class="band" id="parcours" aria-labelledby="t-parcours">
+      <h2 id="t-parcours">Parcours</h2>
+      <div class="cols">
+        <div>
+          <h3>Formation</h3>
+          <ol class="tl">
+            <li><time>2026 – 2027</time><div><b>Master 2 Big Data (BIDABI)</b><span class="where">Sorbonne Paris Nord</span></div></li>
+            <li><time>2025 – 2026</time><div><b>Master 1 Big Data et Intelligence Artificielle</b><span class="where">Sorbonne Paris Nord</span></div></li>
+            <li><time>2024 – 2025</time><div><b>Licence 3 Économie et gestion, parcours Économie, Finance, Entreprise</b><span class="where">Sorbonne Paris Nord</span></div></li>
+            <li><time>2020 – 2023</time><div><b>Licence 1 et 2 Économie et gestion</b><span class="where">Sorbonne Paris Nord</span></div></li>
+            <li><time>2019</time><div><b>Baccalauréat général, série S</b><span class="where">Lycée Le Rodin, Abidjan (Côte d'Ivoire)</span></div></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Expériences</h3>
+          <ul class="tl">
+            <li><time>19 – 23 janv. 2026</time><div><b>Trophée Ex Machina 2026, responsable de la Direction des Affaires Financières</b>
+              <span class="where">Simulation de crise cyber organisée par Sorbonne Paris Nord, avec AXA, Orange Cyberdefense, COMCYBER et le Clusif. Clôture chez KPMG France. <a href="https://www.linkedin.com/showcase/troph%C3%A9e-ex-machina/" target="_blank" rel="noopener">Page du Trophée</a></span>
+              <ul class="xp"><li>Direction financière de la cellule de crise d'un hôpital touché par une cyberattaque</li><li>Évaluation des impacts économiques et suivi de la trésorerie</li><li>Priorisation des dépenses vitales pour la résilience financière de l'hôpital</li><li>Travail en cellule de crise et gouvernance en situation extrême</li><li>Diplôme d'adaptation obtenu à l'issue de la semaine</li></ul></div></li>
+            <li><time>Juillet 2024</time><div><b>Vendeuse, magasin familial, Abidjan</b>
+              <ul class="xp"><li>Gestion de la caisse et respect des procédures de contrôle interne</li><li>Analyse des stocks et prévention des ruptures</li><li>Application des normes d'hygiène et de sécurité</li></ul></div></li>
+            <li><time>Juin 2023</time><div><b>Volontariat, Nanterre</b>
+              <ul class="xp"><li>Gestion de projets en équipe dans le respect des délais</li><li>Sensibilisation aux règles de sécurité et de conformité lors d'événements</li></ul></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Compétences : chaque outil renvoie à la preuve ===== -->
+    <section class="band" id="competences" aria-labelledby="t-comp">
+      <h2 id="t-comp">Compétences, avec le projet qui les prouve</h2>
+      <div class="cols">
+        <div>
+          <ul class="skills">
+            <li><button class="name" type="button" data-filter="sql">SQL (MySQL)</button><span class="used"><a class="d-cl" href="#classicmodels">ClassicModels</a></span></li>
+            <li><button class="name" type="button" data-filter="python">Python</button><span class="used"><a class="d-cl" href="#classicmodels">ClassicModels</a><a class="d-f1" href="#formule-1">Formule 1</a><a class="d-edu" href="#education-emploi">Éducation et emploi</a><a class="d-bp" href="#pression-arterielle">Pression artérielle</a><a class="d-pr" href="#pagerank">PageRank</a><a class="d-w2v" href="#word2vec">Word2Vec</a></span></li>
+            <li><button class="name" type="button" data-filter="pyspark">PySpark</button><span class="used"><a class="d-f1" href="#formule-1">Formule 1</a></span></li>
+            <li><button class="name" type="button" data-filter="kafka">Kafka</button><span class="used"><a class="d-bp" href="#pression-arterielle">Pression artérielle</a></span></li>
+            <li><button class="name" type="button" data-filter="docker">Docker</button><span class="used"><a class="d-bp" href="#pression-arterielle">Pression artérielle</a></span></li>
+            <li><button class="name" type="button" data-filter="pandas">pandas, matplotlib</button><span class="used"><a class="d-cl" href="#classicmodels">ClassicModels</a><a class="d-edu" href="#education-emploi">Éducation et emploi</a></span></li>
+            <li><button class="name" type="button" data-filter="nlp">NLP, Gensim</button><span class="used"><a class="d-w2v" href="#word2vec">Word2Vec</a></span></li>
+            <li><button class="name" type="button" data-filter="graphes">Graphes, NetworkX</button><span class="used"><a class="d-pr" href="#pagerank">PageRank</a></span></li>
+            <li><button class="name" type="button" data-filter="power">Power Automate</button><span class="used"><a class="d-uni" href="#unigo">UniGo</a></span></li>
+          </ul>
+          <p class="note">Un clic sur un outil filtre l'index des projets. R et Power BI font aussi partie de mes compétences, mais je n'ai pas encore de projet à montrer ici pour les prouver.</p>
+        </div>
+        <div>
+          <h3>Langues</h3>
+          <ul class="langs">
+            <li><b>Français</b>, langue maternelle</li>
+            <li><b>Anglais</b>, intermédiaire, préparation du TOEIC</li>
+            <li><b>Coréen</b>, débutant</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== En dehors des données : pages existantes du site ===== -->
+    <section class="band" id="interets" aria-labelledby="t-int">
+      <h2 id="t-int">En dehors des données</h2>
+      <ul class="more-links">
+        <li><a href="centres-interet/photo.html"><b>Photographie</b><span>Moments, paysages et détails du quotidien.</span></a></li>
+        <li><a href="centres-interet/voyages.html"><b>Voyages</b><span>Les lieux que j'ai découverts.</span></a></li>
+        <li><a href="centres-interet/musique.html"><b>Musique</b><span>Une source d'énergie au quotidien.</span></a></li>
+      </ul>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="foot" id="contact" aria-labelledby="t-contact">
+      <h2 id="t-contact">Stage de fin d'études en data à partir de mars 2027</h2>
+      <div class="contact">
+        <code>zeinabcisse590@gmail.com</code>
+        <button class="btn" id="copy2" type="button">Copier l'adresse</button>
+        <a href="mailto:zeinabcisse590@gmail.com">Écrire un e-mail</a>
+        <a href="https://www.linkedin.com/in/karissy-cisse-2337b7347" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/KarissyCISSE21" target="_blank" rel="noopener">GitHub : KarissyCISSE21</a>
+      </div>
+      <small>Karissy Cissé, Master 2 Big Data, Sorbonne Paris Nord</small>
+    </section>
+
+  </main>
+</div>
 
 <script>
-  // Souligne le lien du menu correspondant à la section visible
-  const links = document.querySelectorAll("nav ul a");
-  const sections = [...links].map(a => document.querySelector(a.getAttribute("href")));
-  window.addEventListener("scroll", () => {
-    let current = 0;
-    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 140) current = i; });
-    links.forEach((a, i) => a.classList.toggle("active", i === current));
-  });
-</script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(SVGNS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  var fr = function (x, d) { return x.toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }); };
 
+  /* ---------- Thème : suit le système, un bouton permet de forcer ---------- */
+  (function () {
+    var root = document.documentElement, btn = $('#theme');
+    function effective() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t;
+      return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function paint() {
+      var dark = effective() === 'dark';
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.textContent = dark ? 'Thème clair' : 'Thème sombre';
+    }
+    try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var next = effective() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      paint();
+    });
+    paint();
+  })();
+
+  /* ---------- Copier l'adresse e-mail (avec repli : sélection du texte) ---------- */
+  (function () {
+    var mail = 'zeinabcisse590@gmail.com', status = $('#copy-status');
+    function bind(btn) {
+      var label = btn.textContent;
+      btn.addEventListener('click', function () {
+        function done() {
+          btn.textContent = 'Adresse copiée'; status.textContent = 'Adresse copiée';
+          setTimeout(function () { btn.textContent = label; }, 1800);
+        }
+        function fallback() {
+          var code = btn.parentNode.querySelector('code');
+          var r = document.createRange(); r.selectNodeContents(code);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          status.textContent = 'Adresse sélectionnée, copie-la avec Ctrl ou Cmd + C';
+        }
+        try { navigator.clipboard.writeText(mail).then(done, fallback); } catch (e) { fallback(); }
+      });
+    }
+    $$('#copy, #copy2').forEach(bind);
+  })();
+
+  /* ---------- Explorateur : filtre de l'index par outil ---------- */
+  var setFilter;
+  (function () {
+    var chips = $$('.chip[data-filter]'), items = $$('#index-list li'), status = $('#filter-status');
+    var labels = { sql: 'SQL', python: 'Python', pyspark: 'PySpark', kafka: 'Kafka', nlp: 'NLP', graphes: 'les graphes', power: 'Power Platform', docker: 'Docker', pandas: 'pandas' };
+    var active = null;
+    setFilter = function (tag) {
+      active = (active === tag) ? null : tag;
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === active)); });
+      var n = 0;
+      items.forEach(function (li) {
+        var hit = !active || li.dataset.tags.split(' ').indexOf(active) > -1;
+        li.classList.toggle('is-dim', !hit);
+        if (hit) n++;
+      });
+      status.textContent = active
+        ? n + (n > 1 ? ' projets utilisent ' : ' projet utilise ') + (labels[active] || active) + '.'
+        : 'Sept projets. Choisis un outil pour voir où je l\'ai utilisé.';
+    };
+    chips.forEach(function (c) { c.addEventListener('click', function () { setFilter(c.dataset.filter); }); });
+    // Depuis la section Compétences : applique le filtre puis remonte à l'index
+    $$('.skills .name').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = b.dataset.filter;
+        if (active !== t) setFilter(t);
+        $('#dossiers').scrollIntoView();
+      });
+    });
+  })();
+
+  /* ---------- Barre du haut : section courante ---------- */
+  (function () {
+    var links = $$('.nav a[data-spy]');
+    if (!('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) { map[a.dataset.spy] = a; });
+    // Les dossiers comptent comme la section « Projets »
+    var targets = $$('#dossiers, .dossier, #parcours, #competences, #contact');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var id = e.target.classList.contains('dossier') ? 'dossiers' : e.target.id;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        if (map[id]) map[id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+
+  /* ---------- Pression artérielle : la règle du consommateur ---------- */
+  (function () {
+    var sys = $('#bp-sys'), dia = $('#bp-dia'), svg = $('#bp-plot'), verdict = $('#bp-verdict');
+    if (!sys) return;
+    // Règle du README : alerte si SYS > 140 ou < 90, ou DIA > 90 ou < 60 (mmHg)
+    var R = { sysMax: 140, sysMin: 90, diaMax: 90, diaMin: 60 };
+    var X0 = 40, X1 = 130, Y0 = 60, Y1 = 200; // domaines dia / sys
+    var L = 44, T = 30, W = 340, H = 216;
+    var x = function (v) { return L + (v - X0) / (X1 - X0) * W; };
+    var y = function (v) { return T + (Y1 - v) / (Y1 - Y0) * H; };
+    function evaluate(s, d) {
+      var why = [];
+      if (s > R.sysMax) why.push('systolique supérieure à ' + R.sysMax);
+      if (s < R.sysMin) why.push('systolique inférieure à ' + R.sysMin);
+      if (d > R.diaMax) why.push('diastolique supérieure à ' + R.diaMax);
+      if (d < R.diaMin) why.push('diastolique inférieure à ' + R.diaMin);
+      return why;
+    }
+    var pt;
+    function draw() {
+      [60, 90, 120, 140, 160, 200].forEach(function (v) {
+        el('line', { x1: L, x2: L + W, y1: y(v), y2: y(v), 'class': 'grid' }, svg);
+        var t = el('text', { x: L - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg); t.textContent = v;
+      });
+      [40, 60, 90, 110, 130].forEach(function (v) {
+        el('line', { x1: x(v), x2: x(v), y1: T, y2: T + H, 'class': 'grid' }, svg);
+        var t = el('text', { x: x(v), y: T + H + 16, 'text-anchor': 'middle' }, svg); t.textContent = v;
+      });
+      el('rect', { x: x(R.diaMin), y: y(R.sysMax), width: x(R.diaMax) - x(R.diaMin), height: y(R.sysMin) - y(R.sysMax), 'class': 'zone' }, svg);
+      var z = el('text', { x: x(R.diaMin) + 6, y: y(R.sysMax) + 15, style: 'fill: var(--ink)' }, svg); z.textContent = 'zone normale';
+      var ax = el('text', { x: L + W, y: T + H + 30, 'text-anchor': 'end' }, svg); ax.textContent = 'diastolique (mmHg)';
+      var ay = el("text", { x: 4, y: 14 }, svg); ay.textContent = 'systolique (mmHg)';
+      pt = el('circle', { r: 7, 'class': 'pt' }, svg);
+    }
+    function update() {
+      var s = +sys.value, d = +dia.value, why = evaluate(s, d);
+      $('#bp-sys-out').textContent = s + ' mmHg';
+      $('#bp-dia-out').textContent = d + ' mmHg';
+      pt.setAttribute('cx', x(d)); pt.setAttribute('cy', y(s));
+      verdict.className = 'verdict ' + (why.length ? 'alert' : 'ok');
+      verdict.innerHTML = why.length
+        ? '<b>Alerte</b><small>' + why.join(' ; ') + '. Écrite dans alertes_hypertension.json.</small>'
+        : '<b>Normale</b><small>Écrite dans donnees_normales.json.</small>';
+    }
+    draw();
+    sys.addEventListener('input', update); dia.addEventListener('input', update);
+    $$('[data-bp]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = b.dataset.bp.split(','); sys.value = v[0]; dia.value = v[1]; update();
+      });
+    });
+    update();
+  })();
+
+  /* ---------- PageRank : calcul réel sur un graphe tiré dans le navigateur ---------- */
+  (function () {
+    var nIn = $('#pr-n'), aIn = $('#pr-a'), svg = $('#pr-svg'), bars = $('#pr-bars'), out = $('#pr-readout');
+    if (!nIn) return;
+    var seed = 20261022, g = null, selected = -1;
+
+    function rng(s) { // générateur déterministe (mulberry32)
+      return function () {
+        s |= 0; s = s + 0x6D2B79F5 | 0;
+        var t = Math.imul(s ^ s >>> 15, 1 | s);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+    // Chaque nœud cite 1 à 4 autres nœuds, plus souvent ceux déjà cités
+    function makeGraph(n, s) {
+      var r = rng(s), outl = [], weight = [], i, j;
+      for (i = 0; i < n; i++) { outl.push([]); weight.push(1); }
+      for (i = 0; i < n; i++) {
+        var k = 1 + Math.floor(r() * 4), set = {}, tries = 0, size = 0;
+        while (size < k && tries++ < 60) {
+          var total = 0; for (j = 0; j < n; j++) total += weight[j];
+          var v = r() * total; j = 0;
+          while (j < n - 1 && v >= weight[j]) { v -= weight[j]; j++; }
+          if (j !== i && !set[j]) { set[j] = 1; size++; }
+        }
+        for (var t in set) { outl[i].push(+t); weight[+t]++; }
+      }
+      return outl;
+    }
+    // Itération de puissance, avec redistribution de la masse des nœuds sans sortie
+    function pagerank(outl, alpha) {
+      var n = outl.length, pr = [], i, it, next, dang, delta;
+      for (i = 0; i < n; i++) pr.push(1 / n);
+      for (it = 1; it <= 200; it++) {
+        next = []; dang = 0;
+        for (i = 0; i < n; i++) next.push((1 - alpha) / n);
+        for (i = 0; i < n; i++) {
+          if (!outl[i].length) { dang += pr[i]; continue; }
+          var share = alpha * pr[i] / outl[i].length;
+          for (var q = 0; q < outl[i].length; q++) next[outl[i][q]] += share;
+        }
+        for (i = 0; i < n; i++) next[i] += alpha * dang / n;
+        delta = 0; for (i = 0; i < n; i++) delta += Math.abs(next[i] - pr[i]);
+        pr = next;
+        if (delta < 1e-10) break;
+      }
+      return { pr: pr, iters: it > 200 ? 200 : it };
+    }
+
+    function render() {
+      var n = +nIn.value, alpha = +aIn.value;
+      $('#pr-n-out').textContent = n; $('#pr-a-out').textContent = fr(alpha, 2);
+      g = makeGraph(n, seed);
+      var res = pagerank(g, alpha), pr = res.pr, i, q;
+      var order = pr.map(function (_, i) { return i; }).sort(function (a, b) { return pr[b] - pr[a]; });
+      var rank = []; order.forEach(function (id, r) { rank[id] = r; });
+      var indeg = pr.map(function () { return 0; });
+      g.forEach(function (o) { o.forEach(function (t) { indeg[t]++; }); });
+      var maxp = pr[order[0]], pos = [];
+      for (i = 0; i < n; i++) {
+        var rad = 170 * Math.sqrt(rank[i] / (n - 1)), ang = rank[i] * 2.39996323;
+        pos[i] = [200 + rad * Math.cos(ang), 200 + rad * Math.sin(ang)];
+      }
+      svg.innerHTML = '';
+      var edges = [], nodes = [];
+      for (i = 0; i < n; i++) for (q = 0; q < g[i].length; q++) {
+        var e = el('line', { x1: pos[i][0], y1: pos[i][1], x2: pos[g[i][q]][0], y2: pos[g[i][q]][1], 'class': 'edge' }, svg);
+        e._from = i; e._to = g[i][q]; edges.push(e);
+      }
+      for (i = 0; i < n; i++) {
+        var c = el('circle', { cx: pos[i][0], cy: pos[i][1], r: 2.5 + 11 * Math.sqrt(pr[i] / maxp), 'class': 'node' + (rank[i] < 20 ? ' top' : '') }, svg);
+        var tt = el('title', {}, c); tt.textContent = 'Nœud ' + i + ', rang ' + (rank[i] + 1) + ', ' + fr(pr[i] * 100, 1) + ' %';
+        nodes[i] = c;
+      }
+      function highlight(id) {
+        selected = id;
+        nodes.forEach(function (c, k) { c.classList.toggle('sel', k === id); });
+        edges.forEach(function (e) {
+          e.setAttribute('class', 'edge' + (id < 0 ? '' : (e._to === id ? ' in' : (e._from === id ? ' out' : ' faint'))));
+        });
+        $$('.bar', bars).forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.id === id)); });
+        if (id < 0) {
+          out.textContent = 'Converge en ' + res.iters + ' itérations. Le nœud ' + order[0] + ' est cité par ' + indeg[order[0]] + ' nœuds et porte ' + fr(maxp * 100, 1) + ' % du rang total.';
+        } else {
+          out.textContent = 'Nœud ' + id + ', rang ' + (rank[id] + 1) + ' sur ' + n + ' : cité par ' + indeg[id] + ' nœuds (traits colorés), il en cite ' + g[id].length + ' (traits gris).';
+        }
+      }
+      bars.innerHTML = '';
+      order.slice(0, 20).forEach(function (id) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'bar'; b.dataset.id = id; b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<span>Nœud ' + id + '</span><span class="track"><span class="fill" style="width:' + (pr[id] / maxp * 100).toFixed(1) + '%"></span></span><span class="val">' + fr(pr[id] * 100, 1) + ' %</span>';
+        b.addEventListener('click', function () { highlight(selected === id ? -1 : id); });
+        b.addEventListener('mouseenter', function () { highlight(id); });
+        b.addEventListener('mouseleave', function () { highlight(-1); });
+        b.addEventListener('focus', function () { highlight(id); });
+        bars.appendChild(b);
+      });
+      highlight(-1);
+    }
+    nIn.addEventListener('input', render); aIn.addEventListener('input', render);
+    $('#pr-new').addEventListener('click', function () { seed = (seed * 1664525 + 1013904223) >>> 0; render(); });
+    render();
+  })();
+
+  /* ---------- Word2Vec : ce que lisent CBOW et Skip-gram ---------- */
+  (function () {
+    var box = $('#w2v-tokens');
+    if (!box) return;
+    var words = 'the battery of this phone lasts two full days'.split(' ');
+    var center = 4, win = 2, mode = 'cbow';
+    var winIn = $('#w2v-win'), pairs = $('#w2v-pairs'), explain = $('#w2v-explain');
+    var bCbow = $('#w2v-cbow'), bSg = $('#w2v-sg');
+    words.forEach(function (w, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'tok'; b.textContent = w;
+      b.addEventListener('click', function () { center = i; render(); });
+      box.appendChild(b);
+    });
+    function render() {
+      win = +winIn.value; $('#w2v-win-out').textContent = win;
+      var ctx = [], i;
+      for (i = Math.max(0, center - win); i <= Math.min(words.length - 1, center + win); i++) if (i !== center) ctx.push(i);
+      $$('.tok', box).forEach(function (b, k) {
+        b.classList.toggle('center', k === center);
+        b.classList.toggle('ctx', ctx.indexOf(k) > -1);
+        b.setAttribute('aria-pressed', String(k === center));
+      });
+      bCbow.setAttribute('aria-pressed', String(mode === 'cbow'));
+      bSg.setAttribute('aria-pressed', String(mode === 'sg'));
+      pairs.innerHTML = '';
+      var c = words[center];
+      if (mode === 'cbow') {
+        var d = document.createElement('div');
+        d.textContent = '[' + ctx.map(function (k) { return words[k]; }).join(', ') + '] → ' + c;
+        pairs.appendChild(d);
+        explain.textContent = 'CBOW : le modèle reçoit les mots du contexte et doit retrouver le mot central. Un seul exemple d\'entraînement par position. Dans Gensim : sg=0.';
+      } else {
+        ctx.forEach(function (k) {
+          var d = document.createElement('div'); d.textContent = c + ' → ' + words[k]; pairs.appendChild(d);
+        });
+        explain.textContent = 'Skip-gram : le modèle reçoit le mot central et doit retrouver chaque mot du contexte. Un exemple par mot voisin, ' + ctx.length + ' ici. Dans Gensim : sg=1.';
+      }
+    }
+    winIn.addEventListener('input', render);
+    bCbow.addEventListener('click', function () { mode = 'cbow'; render(); });
+    bSg.addEventListener('click', function () { mode = 'sg'; render(); });
+    render();
+  })();
+})();
+
+</script>
 </body>
 </html>
